@@ -12,3 +12,8 @@
 - Zooming with 2x grip
     - fades into itself or similar when zoomed in
 - Dragging with 1x grip
+
+
+## Data
+https://memory-alpha.fandom.com/wiki/Timeline
+
