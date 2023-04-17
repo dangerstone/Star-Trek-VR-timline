@@ -83,7 +83,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2720336005204717885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 2720336006025432398}
   - component: {fileID: 2720336006025432385}
   m_Layer: 0
-  m_Name: Episode (1)
+  m_Name: Season
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,7 +486,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 196.4666, y: 30.669}
+  m_SizeDelta: {x: 233.7468, y: 30.669}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2720336006025432398
 CanvasRenderer:
@@ -581,7 +581,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 24.94563, y: -0.1590042, z: 2.6272888, w: 1.744055}
+  m_margin: {x: 24.94563, y: -0.1590042, z: 4.3476105, w: 1.744055}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1244,7 +1244,7 @@ GameObject:
   - component: {fileID: 2720336006675165681}
   - component: {fileID: 2720336006675165680}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

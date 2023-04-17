@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class EpisodeList
-{
-    public Episode[] Episodes;
-}
-
-[System.Serializable]
 public class Episode
 {
     public string uid;
@@ -29,5 +23,3 @@ public class Episode
     public string usAirDate;
     public string finalScriptDate;
 }
-
-
