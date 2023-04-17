@@ -41,7 +41,7 @@ public class CreateDonut : MonoBehaviour
             var lookPos = donutCenter - pos;
             lookPos.y = 0;
             var rot = Quaternion.LookRotation(lookPos);
-            GameObject flag = Instantiate(flagPrefab, pos, rot, parent.transform); // make face center
+            GameObject flag = Instantiate(flagPrefab, pos, rot, donut.transform); // make face center
             flag.name = "Flag " + i;
         }
     }
