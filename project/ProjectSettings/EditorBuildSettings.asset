@@ -8,6 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+<<<<<<< HEAD
   - enabled: 0
     path: Assets/Samples/XR Interaction Toolkit/2.2.0/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177
@@ -15,6 +16,9 @@ EditorBuildSettings:
     path: Assets/Scenes/NewSceneXRITK.unity
     guid: 72bd0f62eaef38241bc98c4023014b40
   - enabled: 0
+=======
+  - enabled: 1
+>>>>>>> bfccfe509991b0e030d3821402cda67a3e6f397c
     path: Assets/Scenes/SimpleFlatTimeline.unity
     guid: ba7adb0da5904bf4c8960a0de4be928b
   m_configObjects:
