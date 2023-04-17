@@ -7,14 +7,13 @@ public class CreateDonut : MonoBehaviour
     public GameObject parent;
     public GameObject donutPrefab;
     public GameObject flagPrefab;
-    private GameObject donut = null;
+    public GameObject donut;
     private Vector3 centerPos = new Vector3(0, 0.75f, 0); // NOTE could possibly be an argument if we want to put the circle around the user by default  (make public and somehow pass user pos)
     // public List<???> flagItems = ???? // TODO iterate over this when setting flags instead (currently it's just a dummy iteration)
 
     // Start is called before the first frame update
     void Start()
     {
-        this.donut = Instantiate(donutPrefab, centerPos, Quaternion.identity, parent.transform);
         setFlags();
     }
 
