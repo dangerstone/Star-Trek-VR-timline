@@ -18,8 +18,16 @@ public class Episode
     public bool featureLength;
     public string stardateFrom;
     public string stardateTo;
-    public string yearFrom;
+    public int yearFrom;
     public string yearTo;
     public string usAirDate;
     public string finalScriptDate;
 }
+
+class EpisodeComparer: IComparer
+{
+    public int Compare(object x, object y)
+    {
+        return (((Episode)x).yearFrom - ((Episode)y).yearFrom);
+    }
+} 
