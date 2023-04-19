@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
-  defaultLowerbound: 2240
-  defaultUpperbound: 2280
+  defaultLowerbound: 2350
+  defaultUpperbound: 2380
   defaultDeadzoneSize: 0.5
   radius: 3
   height: 0.7

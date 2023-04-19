@@ -5,17 +5,18 @@ using UnityEngine;
 public class CreateDonut : MonoBehaviour
 {
     public GameObject parent;
-    public GameObject donutPrefab;
     public GameObject flagPrefab;
     public GameObject donut;
+    public Donut donutScript;
     private Vector3 centerPos = new Vector3(0, 0.75f, 0); // NOTE could possibly be an argument if we want to put the circle around the user by default  (make public and somehow pass user pos)
     // public List<???> flagItems = ???? // TODO iterate over this when setting flags instead (currently it's just a dummy iteration)
 
-    public int startYear = 2350;
-    public int endYear = 2380;
-    public int interval;
-    public float year_radian;
-    public float deadZoneAngle = 0.2f;
+    public float height;
+    private int startYear = 2350;
+    private int endYear = 2380;
+    private int interval;
+    private float year_radian;
+    private float deadZoneAngle = 0.2f;
 
     public TextAsset jsonFile;
 
@@ -47,7 +48,7 @@ public class CreateDonut : MonoBehaviour
         // dummy/static timeline, we can just use the length of the episode list, 
         // which would place them uniformly
         // FIXME struggling bc the flags are offset from the donut (or vice versa) and also trying to figure out what the radius actually is 
-        float height = 1.2f;
+        
         float radius = 3;
         float offset = deadZoneAngle / 2; //To center the deadzone at 0* 
         EpisodeList episodeList = JsonUtility.FromJson<EpisodeList>(jsonFile.text);
@@ -103,6 +104,7 @@ public class CreateDonut : MonoBehaviour
                 previousRaised = false;
             }
             flag.transform.localScale = new Vector3(0.002f, 0.0025f, 0.0025f);
+            flag.transform.position += new Vector3(0, 0.75f, 0);
             flag.transform.Find("Flag/Panel/Title").GetComponentInChildren<TMP_Text>().text = episode.title;
             flag.transform.Find("Flag/Panel/Series").GetComponentInChildren<TMP_Text>().text = episode.seriestitle;
             flag.transform.Find("Flag/Panel/Panel/Episode").GetComponentInChildren<TMP_Text>().text = "Episode " + episode.episodeNumber.ToString();

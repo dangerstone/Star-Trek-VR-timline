@@ -36,6 +36,16 @@ public class Donut : MonoBehaviour
         
     }
 
+    int getStartYear() {
+        return lowerbound;
+    }
+    int getEndYear() {
+        return upperbound;
+    }
+    float getDeadzoneSize() {
+        return deadZoneSize;
+    }
+
     int computeTickGap(int lower, int upper) {
         int interval = upper - lower;
         int gap = interval switch {
