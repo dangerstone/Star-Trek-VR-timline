@@ -19,6 +19,8 @@ public class Donut : MonoBehaviour
     public float height;
 
     public GameObject tickPrefab;
+    public GameObject instantiator; // public FlagHandler flagHandler;
+    private FlagHandler flagHandler;
 
     // Start is called before the first frame update
     void Start() {
@@ -29,6 +31,10 @@ public class Donut : MonoBehaviour
 
         int tickGap = computeTickGap(lowerbound, upperbound);
         renderTickMarks(tickGap);
+
+        flagHandler = instantiator.GetComponent<FlagHandler>();
+        flagHandler.setFlags(radius, height, deadZoneSize, lowerbound, upperbound);
+        
     }
 
     // Update is called once per frame
@@ -54,7 +60,7 @@ public class Donut : MonoBehaviour
             < 100 => 10,
             < 500 => 50,
             < 1000 => 100,
-            _ => 1000, // NOTE look at the actual timescope of ST to make better rules her maybe
+            _ => 1000, // NOTE look at the actual timescope of ST to make better rules here maybe
         };
         Debug.Log("Gap: " + gap);
         return gap;
@@ -66,22 +72,24 @@ public class Donut : MonoBehaviour
         Debug.Log("Number of ticks " + noOfTicks);
 
         Vector3 donutCenter = new Vector3(0, 0, 0);
+        float deadZoneOffset = deadZoneSize/2;
+        float radiansPerTick = (Mathf.PI*2f - deadZoneSize) / noOfTicks;        
         // loop over that many ticks
         for (int i = 0; i <= noOfTicks; i++) {
-            float radians = (i-lowerbound) * (Mathf.PI*2f - deadZoneSize) / noOfTicks + deadZoneSize/2;
-            Vector3 pos = donutCenter + (new Vector3(radius *Mathf.Cos(-radians), height, radius *Mathf.Sin(-radians)));
             // compute position with formula
-            // instantiate and set the tick text to lowerbound + i*gap
+            float radians = i * radiansPerTick + deadZoneOffset;//  (i-lowerbound) * radiansPerTick + deadZoneOffset; // float radians = (i-lowerbound) * (Mathf.PI*2f - deadZoneSize) / noOfTicks + deadZoneSize/2;
+            Vector3 pos = donutCenter + (new Vector3(radius *Mathf.Cos(-radians), height, radius *Mathf.Sin(-radians)));
+            // rotate tick to face center
             var lookPos = donutCenter - pos;
             lookPos.y = 0;
             var rot = Quaternion.LookRotation(lookPos);
+            // instantiate and set the tick text
             GameObject flag = Instantiate(tickPrefab, pos, rot, parent.transform);
             int year = lowerbound + i * gap;
             flag.name = "Tick" + year;
             TMP_Text label =  flag.transform.Find("Label").GetComponent<TMP_Text>();
-            Debug.Log(label.text);
+            // Debug.Log(label.text);
             label.text = year.ToString();
-            // stop when DZ reached
         }
     }
 

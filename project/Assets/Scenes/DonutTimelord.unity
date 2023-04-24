@@ -1700,18 +1700,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1520904270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 648fef12e371b144db5af1f9dcefb084, type: 3}
+  m_Script: {fileID: 11500000, guid: 77700fd2d68de63449c766060dd235b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
+  flagParent: {fileID: 1486469216}
   flagPrefab: {fileID: 2720336005204717884, guid: 032339ac7be2e4a468e958f98c759a21, type: 3}
-  donut: {fileID: 1486469216}
-  height: 1000
-  startYear: 2350
-  endYear: 2380
-  interval: 0
-  year_radian: 0
-  deadZoneAngle: 1
   jsonFile: {fileID: 4900000, guid: 236171270ecd65844a8c973e7be82fe2, type: 3}
 --- !u!1 &1537118971
 GameObject:
@@ -1773,14 +1766,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537225606}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1537118972}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1537225608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2289,6 +2282,14 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 1956407854}
+    - target: {fileID: 988847895819782524, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
+      propertyPath: flagHandler
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 988847895819782524, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
+      propertyPath: instantiator
+      value: 
+      objectReference: {fileID: 1520904270}
     - target: {fileID: 988847895819782524, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
       propertyPath: defaultDeadzoneSize
       value: 1
