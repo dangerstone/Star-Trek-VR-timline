@@ -93,7 +93,7 @@ MeshCollider:
   m_GameObject: {fileID: 4186964595084121121}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -191,7 +191,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 4211933698447307029}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -206,6 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3122827801984460077}
   - component: {fileID: -697315624661635836}
+  - component: {fileID: 4583081450415114661}
   m_Layer: 0
   m_Name: Flag
   m_TagString: Untagged
@@ -311,3 +312,16 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &4583081450415114661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911505625754349478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1, z: 0.15}
+  m_Center: {x: 0, y: 0.4, z: 0}

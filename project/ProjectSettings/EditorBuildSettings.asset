@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NewSceneXRITK.unity
     guid: 72bd0f62eaef38241bc98c4023014b40
+  - enabled: 0
+    path: Assets/Scenes/DonutTimelord.unity
+    guid: b346443496609d14dbb3ee8be34d3cee
+  - enabled: 1
+    path: Assets/Scenes/DonutTimelordScrollCylinder.unity
+    guid: 0d54f715f70dfbc4cbfd69318f9c47fe
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 76f219fe24426fc4da463553e1d37381, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 45434ed3c390d6647bd884c82adb0c78, type: 2}

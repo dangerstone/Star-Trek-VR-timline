@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2720336005204717883}
   - component: {fileID: 2720336005204717882}
   - component: {fileID: 2720336005204717885}
+  - component: {fileID: 1554649861385995590}
   m_Layer: 0
   m_Name: FlagPrefab
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2720336005204717885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +103,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!65 &1554649861385995590
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2720336005204717884}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 500, y: 500, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2720336005282126169
 GameObject:
   m_ObjectHideFlags: 0
