@@ -135,9 +135,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets:
-  - {fileID: 6552882523807750166, guid: 45434ed3c390d6647bd884c82adb0c78, type: 2}
-  - {fileID: 11400000, guid: 76f219fe24426fc4da463553e1d37381, type: 2}
+  preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -157,7 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.Mango.startrek2
+    Android: com.Mango.startrek3
     Standalone: com.DefaultCompany.project
   buildNumber:
     Standalone: 0
