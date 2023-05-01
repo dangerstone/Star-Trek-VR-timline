@@ -2060,6 +2060,10 @@ PrefabInstance:
       propertyPath: instantiator
       value: 
       objectReference: {fileID: 1520904270}
+    - target: {fileID: 988847895819782524, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
+      propertyPath: deadTickPrefab
+      value: 
+      objectReference: {fileID: 1761222965043667370, guid: 098ebe4cc3cb08949b15a8c0c99434af, type: 3}
     - target: {fileID: 3681530541296321213, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
       propertyPath: m_Name
       value: Donut
