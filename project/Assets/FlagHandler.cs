@@ -185,7 +185,7 @@ public class FlagHandler : MonoBehaviour
                 previousRaised = false;
             }
             flag.transform.localScale = new Vector3(0.002f, 0.0025f, 0.0025f);
-            flag.transform.position += new Vector3(0, 0.75f, 0);
+            flag.transform.position += new Vector3(0, 0.65f, 0);
             setFlagText(flag, episode);
         }
 
