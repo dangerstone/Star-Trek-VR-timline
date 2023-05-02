@@ -69,7 +69,7 @@ public class Donut : MonoBehaviour
     public void updatePositions(float change)
     {
         //Debug.Log("change: " + change + ". radiPerTick: " + radiansPerTick);
-        if(Mathf.Abs(change) > radiansPerTick) //We need to update the years
+        /*if(Mathf.Abs(change) > radiansPerTick) //We need to update the years
         {
             int yearsToChange = Mathf.FloorToInt(Mathf.Abs(change / radiansPerTick));
             Debug.Log(yearsToChange +" years to change " +  " from " + change + "/" + radiansPerTick);
@@ -85,8 +85,8 @@ public class Donut : MonoBehaviour
             renderTickMarks(computeTickGap(lowerbound, upperbound),0f);
         } else
         {
+        }*/
             updateTickMarks(change);
-        }
     }
 
     int computeTickGap(int lower, int upper) {
