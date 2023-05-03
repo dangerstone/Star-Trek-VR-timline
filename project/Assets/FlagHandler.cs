@@ -201,4 +201,13 @@ public class FlagHandler : MonoBehaviour
         flag.transform.Find("Flag/Panel/Year").GetComponentInChildren<TMP_Text>().text = "Year " + episode.yearFrom.ToString();
         flag.name = "Flag " + episode.yearFrom + " " + episode.title;
     }
+
+    public void KillAllFlags()
+    {
+        int childCount = flagParent.transform.childCount;
+        for (int i = childCount - 1; i >= 0; i--)
+        {
+            Destroy(flagParent.transform.GetChild(i).gameObject);
+        } 
+    }
 }
