@@ -101,9 +101,10 @@ public class FlagHandler : MonoBehaviour
             
             if (!previousYearRaised)
             {
-                flag.transform.Find("Cylinder").transform.localScale += new Vector3(0, 500, 0);
-                flag.transform.Find("Cylinder").transform.position += new Vector3(0, 50, 0);
-                flag.transform.Find("Flag").transform.position += new Vector3(0, 500, 0);
+                flag.transform.Find("Cylinder").transform.localScale += new Vector3(0, 200, 0);
+                flag.transform.Find("Cylinder").transform.position += new Vector3(0, 200, 0);
+                flag.transform.Find("Flag").transform.position += new Vector3(0, 400, 0);
+                flag.transform.Find("BoxCollider").transform.position += new Vector3(0, 400, 0);
                 previousYearRaised = true;
                 //flag.transform.Find("Flag").transform.position += new Vector3(0,flag.transform.Find("Cylinder").transform.position.y+50, 0);
             }
@@ -174,9 +175,10 @@ public class FlagHandler : MonoBehaviour
             flag.name = "Flag " + i;
             if (!previousRaised)
             {
-                flag.transform.Find("Cylinder").transform.localScale += new Vector3(0, 500, 0);
-                flag.transform.Find("Cylinder").transform.position += new Vector3(0, 50, 0);
-                flag.transform.Find("Flag").transform.position += new Vector3(0, 500, 0);
+                flag.transform.Find("Cylinder").transform.localScale += new Vector3(0, 200, 0);
+                flag.transform.Find("Cylinder").transform.position += new Vector3(0, 200, 0);
+                flag.transform.Find("Flag").transform.position += new Vector3(0, 400, 0);
+                flag.transform.Find("BoxCollider").transform.position += new Vector3(0, 400, 0);
                 previousRaised = true;
                 //flag.transform.Find("Flag").transform.position += new Vector3(0,flag.transform.Find("Cylinder").transform.position.y+50, 0);
             }
@@ -196,7 +198,7 @@ public class FlagHandler : MonoBehaviour
         flag.transform.Find("Flag/Panel/Series").GetComponentInChildren<TMP_Text>().text = episode.seriestitle;
         flag.transform.Find("Flag/Panel/Panel/Episode").GetComponentInChildren<TMP_Text>().text = "Episode " + episode.episodeNumber.ToString();
         flag.transform.Find("Flag/Panel/Panel/Season").GetComponentInChildren<TMP_Text>().text = "Season " + episode.seasonNumber.ToString();
-        flag.transform.Find("Flag/Panel/Year").GetComponentInChildren<TMP_Text>().text += " " + episode.yearFrom;
+        flag.transform.Find("Flag/Panel/Year").GetComponentInChildren<TMP_Text>().text = "Year " + episode.yearFrom.ToString();
         flag.name = "Flag " + episode.yearFrom + " " + episode.title;
     }
 }
