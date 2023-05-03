@@ -40,7 +40,7 @@ public class Donut : MonoBehaviour
 
         tickGap = computeTickGap(lowerbound, upperbound);
         makeDeadZoneTicks();
-        renderTickMarks(tickGap,0);
+        renderTickMarks(tickGap);
 
         flagHandler = instantiator.GetComponent<FlagHandler>();
         flagHandler.setFlags(radius, height, deadZoneSize, lowerbound, upperbound);
@@ -52,10 +52,10 @@ public class Donut : MonoBehaviour
         
     }
 
-    int getStartYear() {
+    public int getStartYear() {
         return lowerbound;
     }
-    int getEndYear() {
+    public int getEndYear() {
         return upperbound;
     }
    
@@ -72,25 +72,7 @@ public class Donut : MonoBehaviour
 
     public void updatePositions(float change)
     {
-        //Debug.Log("change: " + change + ". radiPerTick: " + radiansPerTick);
-        if(Mathf.Abs(change) > radiansPerTick) //We need to update the years
-        {
-            int yearsToChange = Mathf.FloorToInt(Mathf.Abs(change / radiansPerTick));
-            Debug.Log(yearsToChange +" years to change " +  " from " + change + "/" + radiansPerTick);
-            if(change < 0) //If negative then some way
-            {
-                lowerbound += yearsToChange;
-                upperbound += yearsToChange;
-            } else
-            {//Else the other way
-                lowerbound -= yearsToChange;
-                upperbound -= yearsToChange;
-            }
-            renderTickMarks(computeTickGap(lowerbound, upperbound),0f);
-        } else
-        {
             updateTickMarks(change);
-        }
     }
 
     int computeTickGap(int lower, int upper) {
@@ -101,7 +83,7 @@ public class Donut : MonoBehaviour
             < 100 => 10,
             < 500 => 50,
             < 1000 => 100,
-            _ => 1000, // NOTE look at the actual timescope of ST to make better rules here maybe
+            _ => 200, // NOTE look at the actual timescope of ST to make better rules here maybe
         };
         Debug.Log("Gap: " + gap);
         return gap;
@@ -110,10 +92,6 @@ public class Donut : MonoBehaviour
     void updateTickMarks(float extraOfsset)
     {
         int childs = tickParent.transform.childCount;
-
-        IComparer myComparer = new FlagComparer();
-        //Debug.Log("number children" + childs);
-        //Debug.Log("Interval [" + lowerbound + "," + upperbound + "]");
         for (int i = 0 ; i < childs; i++)//Start with removing the outdated tickmarks
         {
             Transform child = (tickParent.transform.GetChild(i));
@@ -121,11 +99,12 @@ public class Donut : MonoBehaviour
             var angleBetweenTickAndOrigin = Vector3.Angle(originVector, child.transform.position);
             if(angleBetweenTickAndOrigin <= Degrees(deadZoneOffset))
             {
-                Debug.Log("Should kill " + child.name);
+                //Debug.Log("Should kill " + child.name);
                 Destroy(child.gameObject);
             }
 
         }
+        IComparer myComparer = new FlagComparer();
         GameObject[] allTicks = GameObject.FindGameObjectsWithTag("aTick"); //update such that the deleted are gone
         Array.Sort(allTicks, myComparer);//Sort by name such that first is lowest 
 
@@ -190,7 +169,7 @@ public class Donut : MonoBehaviour
     private GameObject firstBorn;
 
   
-    void renderTickMarks(int gap, float extraOffset) {
+    void renderTickMarks(int gap) {
         
         // compute how many ticks
         int noOfTicks = (int)(upperbound-lowerbound) / gap;
@@ -220,29 +199,19 @@ public class Donut : MonoBehaviour
         }
     }
 
-    private Vector3 createDeadzoneVector(int number) {
-        return new Vector3(radius * Mathf.Cos(-deadZoneOffset), height, radius * Mathf.Sin(-deadZoneOffset));
-    }
-
-    void instantiateDeadzoneIndicator(Vector3 pos) {
-        var lookPos = donutCenter - pos;
-        lookPos.y = 0;
-        var rot = Quaternion.LookRotation(lookPos);
-        Instantiate(deadZoneIndicatorPrefab, pos, rot, tickParent.transform);
-    }
-
     void makeDeadZoneTicks()
     {   
+        // #ruskode :)
         Vector3 deadzoneVectorStart = new Vector3(radius * Mathf.Cos(-7*deadZoneOffset/8), height, radius * Mathf.Sin(-7*deadZoneOffset/8));
-        Vector3 deadzoneVectorBeep = new Vector3(radius * Mathf.Cos(3*deadZoneOffset/8), height, radius * Mathf.Sin(-3*deadZoneOffset/8));
-        //Vector3 deadzoneVectorMiddle = new Vector3(radius * Mathf.Cos(1), height, radius * Mathf.Sin(0));
-        Vector3 deadzoneVectorBoop = new Vector3(radius * Mathf.Cos(3*deadZoneOffset/8), height, radius * Mathf.Sin(3*deadZoneOffset/8));
+        Vector3 deadzoneVectorBeep = new Vector3(radius * Mathf.Cos(4*deadZoneOffset/9), height, radius * Mathf.Sin(-4*deadZoneOffset/9));
+        Vector3 deadzoneVectorMiddle = new Vector3(radius, height, 0);
+        Vector3 deadzoneVectorBoop = new Vector3(radius * Mathf.Cos(4*deadZoneOffset/9), height, radius * Mathf.Sin(4*deadZoneOffset/9));
         Vector3 deadzoneVectorEnd = new Vector3(radius * Mathf.Cos(7*deadZoneOffset/8), height, radius * Mathf.Sin(7*deadZoneOffset/8));
 
         List<Vector3> deadzoneIndicatorPositions = new List<Vector3>();
         deadzoneIndicatorPositions.Add(deadzoneVectorStart);
         deadzoneIndicatorPositions.Add(deadzoneVectorBeep);
-        // deadzoneIndicatorPositions.Add(deadzoneVectorMiddle);
+        deadzoneIndicatorPositions.Add(deadzoneVectorMiddle);
         deadzoneIndicatorPositions.Add(deadzoneVectorBoop);
         deadzoneIndicatorPositions.Add(deadzoneVectorEnd);
 
@@ -252,33 +221,49 @@ public class Donut : MonoBehaviour
             var rot = Quaternion.LookRotation(lookPos);
             Instantiate(deadZoneIndicatorPrefab, pos, rot, deadZoneParent.transform);
         }
-
-/*
-        Instantiate(deadZoneIndicatorPrefab, deadzoneVectorStart, Quaternion.identity, transform); 
-        Instantiate(deadZoneIndicatorPrefab, deadzoneVectorBeep, Quaternion.identity, transform); 
-        Instantiate(deadZoneIndicatorPrefab, deadzoneVectorMiddle, Quaternion.identity, transform); 
-        Instantiate(deadZoneIndicatorPrefab, deadzoneVectorBoop, Quaternion.identity, transform);
-        Instantiate(deadZoneIndicatorPrefab, deadzoneVectorEnd, Quaternion.identity, transform); */
-
-        /*deadzoneVector = new Vector3(radius * Mathf.Cos(-deadZoneOffset), height, radius * Mathf.Sin(-deadZoneOffset));
-        GameObject beginning = Instantiate(deadTickPrefab, deadzoneVector, Quaternion.identity, transform); //this is where the years come out /lowerbound on the timescale
-        beginning.name = "beginning";
-
-        Vector3 deadzoneVector2 = new Vector3(radius * Mathf.Cos(deadZoneOffset), height, radius * Mathf.Sin(deadZoneOffset));
-        GameObject endOfTimelinePoint = Instantiate(deadTickPrefab, deadzoneVector2, Quaternion.identity, transform);//this is where the upperbound lies
-        endOfTimelinePoint.name = "endOfTime";
-
-        originVector = new Vector3(radius * Mathf.Cos(1), height, radius * Mathf.Sin(0));
-        //GameObject deadzoneTick3 = Instantiate(deadTickPrefab, originVector, Quaternion.identity, transform);
-        //deadzoneTick3.name = "origin";
-        */
     }
 
-    public void zoomIn() {
+    public void zoomIn(int delta) {
         // update lower and upperbound based on scaling
+        int newLower = getStartYear() + delta;
+        int newUpper = getEndYear() - delta; //decrease the interval
+        if(newUpper - newLower <= 5)
+        {
+            newLower = getStartYear(); //Idk how to make sure we dont go to small scale 
+            newUpper = getEndYear();
+        }//will still do the hole redraw even though there might not be changes to the interval...
+        //what happens if we zoom in at 3300? Idk so dont try
+        lowerbound = newLower;
+        upperbound = newUpper;
+        Debug.Log("Interval is now [" + lowerbound + "," + upperbound + "]");
+        RerenderScene();
     }
-    public void zoomOut() {
+    public void zoomOut(int delta) {
         // update lower and upperbound based on scaling
+        int newLower = getStartYear() - delta;
+        int newUpper = getEndYear() + delta; //increase the interval
+        if(newLower < 1900)
+        {
+            newLower = 1900; //cannot go more back than this but can still change upper
+        }
+        if(newUpper > 3500)
+        {
+            newUpper = 3500;//cannot go higher than this
+        }
+        if(getStartYear()==1900 && getEndYear() == 3500) { return; } //no need to rerender again
+        lowerbound = newLower; //zooming out
+        upperbound = newUpper;   //zooming out
+        Debug.Log("Interval is now [" + lowerbound + "," + upperbound + "]");
+        RerenderScene();
+    }
+
+    public void RerenderScene()
+    {
+        tickGap = computeTickGap(lowerbound, upperbound);
+        KillChildrenTicks();//remove all old tickMarks
+        flagHandler.KillAllFlags();//Remove flags
+        renderTickMarks(tickGap); //Redraw from scratch
+        flagHandler.setFlags(radius, height, deadZoneSize, lowerbound, upperbound);
     }
 
     float Degrees(float radian)
@@ -289,5 +274,16 @@ public class Donut : MonoBehaviour
     float Radians(float degree)
     {
         return degree * Mathf.PI / 180;
+    }
+
+    //Find all tickmarks and destroy the gameobjects. 
+    void KillChildrenTicks()
+    {
+        int childCount = tickParent.transform.childCount;
+        for(int i = childCount-1; i>=0; i--)
+        {
+            Transform child = (tickParent.transform.GetChild(i));
+            Destroy(child.gameObject);
+        }
     }
 }

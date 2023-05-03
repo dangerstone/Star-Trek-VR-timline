@@ -24,7 +24,8 @@ public class testChange : MonoBehaviour
         if(Time.time - lastTime > 0.2f && Time.time-firstTime > 5f)
         {
             float radi = donut.getRadianPerTick();
-            donut.updatePositions(-radi*0.01f);
+            //donut.updatePositions(-radi*0.01f);
+            donut.zoomOut(10);
             lastTime = Time.time;
         }
     }
