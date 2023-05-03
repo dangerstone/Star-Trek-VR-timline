@@ -6,7 +6,7 @@ using System.Collections;
 
 public class Donut : MonoBehaviour
 {
-    public GameObject parent;
+    public GameObject tickParent;
 
     public int defaultLowerbound;
     public int defaultUpperbound;
@@ -21,10 +21,14 @@ public class Donut : MonoBehaviour
 
     public GameObject tickPrefab;
     public GameObject deadTickPrefab;
+    public GameObject deadZoneIndicatorPrefab;
+    public GameObject deadZoneParent;
     public GameObject instantiator; // public FlagHandler flagHandler;
     private FlagHandler flagHandler;
 
     private int tickGap;
+
+    Vector3 donutCenter = new Vector3(0, 0, 0);
 
     // Start is called before the first frame update
     void Start() {
@@ -105,14 +109,14 @@ public class Donut : MonoBehaviour
 
     void updateTickMarks(float extraOfsset)
     {
-        int childs = parent.transform.childCount;
+        int childs = tickParent.transform.childCount;
 
         IComparer myComparer = new FlagComparer();
         //Debug.Log("number children" + childs);
         //Debug.Log("Interval [" + lowerbound + "," + upperbound + "]");
         for (int i = 0 ; i < childs; i++)//Start with removing the outdated tickmarks
         {
-            Transform child = (parent.transform.GetChild(i));
+            Transform child = (tickParent.transform.GetChild(i));
             child.RotateAround(new Vector3(0, 0, 0), Vector3.up, Degrees(extraOfsset));
             var angleBetweenTickAndOrigin = Vector3.Angle(originVector, child.transform.position);
             if(angleBetweenTickAndOrigin <= Degrees(deadZoneOffset))
@@ -135,7 +139,7 @@ public class Donut : MonoBehaviour
                 float radians = Radians(angleToFirstBorn) - radiansPerTick;// 
                 Vector3 pos = (new Vector3(radius * Mathf.Cos(-radians), height, radius * Mathf.Sin(-radians)));
 
-                GameObject newChild = Instantiate(tickPrefab, pos, Quaternion.LookRotation(-pos), parent.transform);
+                GameObject newChild = Instantiate(tickPrefab, pos, Quaternion.LookRotation(-pos), tickParent.transform);
                 TMP_Text label = firstBorn.transform.Find("Label").GetComponent<TMP_Text>();
                 TMP_Text labelNew = newChild.transform.Find("Label").GetComponent<TMP_Text>();
                 int newYear = Int32.Parse(label.text) - tickGap;
@@ -164,7 +168,7 @@ public class Donut : MonoBehaviour
                 float radians = angleToRadian - radiansPerTick;// 
                 Vector3 pos = (new Vector3(radius * Mathf.Cos(radians), height, radius * Mathf.Sin(radians)));
 
-                GameObject newChild = Instantiate(tickPrefab, pos, Quaternion.LookRotation(-pos), parent.transform);
+                GameObject newChild = Instantiate(tickPrefab, pos, Quaternion.LookRotation(-pos), tickParent.transform);
 
                 TMP_Text label = lastBorn.transform.Find("Label").GetComponent<TMP_Text>();
                 TMP_Text labelNew = newChild.transform.Find("Label").GetComponent<TMP_Text>();
@@ -192,7 +196,7 @@ public class Donut : MonoBehaviour
         int noOfTicks = (int)(upperbound-lowerbound) / gap;
         Debug.Log("Number of ticks " + noOfTicks);
 
-        Vector3 donutCenter = new Vector3(0, 0, 0);
+        // Vector3 donutCenter = new Vector3(0, 0, 0);
     
         radiansPerTick = (Mathf.PI*2f - deadZoneSize) / noOfTicks;
         Debug.Log("radianPerTick" + radiansPerTick);
@@ -207,7 +211,7 @@ public class Donut : MonoBehaviour
             lookPos.y = 0;
             var rot = Quaternion.LookRotation(lookPos);
             // instantiate and set the tick text
-            GameObject flag = Instantiate(tickPrefab, pos, rot, parent.transform);
+            GameObject flag = Instantiate(tickPrefab, pos, rot, tickParent.transform);
             flag.tag = "aTick";
             int year = lowerbound + i * gap;
             flag.name = "Tick" + year;
@@ -216,10 +220,47 @@ public class Donut : MonoBehaviour
         }
     }
 
+    private Vector3 createDeadzoneVector(int number) {
+        return new Vector3(radius * Mathf.Cos(-deadZoneOffset), height, radius * Mathf.Sin(-deadZoneOffset));
+    }
+
+    void instantiateDeadzoneIndicator(Vector3 pos) {
+        var lookPos = donutCenter - pos;
+        lookPos.y = 0;
+        var rot = Quaternion.LookRotation(lookPos);
+        Instantiate(deadZoneIndicatorPrefab, pos, rot, tickParent.transform);
+    }
 
     void makeDeadZoneTicks()
-    {
-        deadzoneVector = new Vector3(radius * Mathf.Cos(-deadZoneOffset), height, radius * Mathf.Sin(-deadZoneOffset));
+    {   
+        Vector3 deadzoneVectorStart = new Vector3(radius * Mathf.Cos(-7*deadZoneOffset/8), height, radius * Mathf.Sin(-7*deadZoneOffset/8));
+        Vector3 deadzoneVectorBeep = new Vector3(radius * Mathf.Cos(3*deadZoneOffset/8), height, radius * Mathf.Sin(-3*deadZoneOffset/8));
+        //Vector3 deadzoneVectorMiddle = new Vector3(radius * Mathf.Cos(1), height, radius * Mathf.Sin(0));
+        Vector3 deadzoneVectorBoop = new Vector3(radius * Mathf.Cos(3*deadZoneOffset/8), height, radius * Mathf.Sin(3*deadZoneOffset/8));
+        Vector3 deadzoneVectorEnd = new Vector3(radius * Mathf.Cos(7*deadZoneOffset/8), height, radius * Mathf.Sin(7*deadZoneOffset/8));
+
+        List<Vector3> deadzoneIndicatorPositions = new List<Vector3>();
+        deadzoneIndicatorPositions.Add(deadzoneVectorStart);
+        deadzoneIndicatorPositions.Add(deadzoneVectorBeep);
+        // deadzoneIndicatorPositions.Add(deadzoneVectorMiddle);
+        deadzoneIndicatorPositions.Add(deadzoneVectorBoop);
+        deadzoneIndicatorPositions.Add(deadzoneVectorEnd);
+
+        foreach (Vector3 pos in deadzoneIndicatorPositions) {
+            var lookPos = donutCenter - pos;
+            lookPos.y = 0;
+            var rot = Quaternion.LookRotation(lookPos);
+            Instantiate(deadZoneIndicatorPrefab, pos, rot, deadZoneParent.transform);
+        }
+
+/*
+        Instantiate(deadZoneIndicatorPrefab, deadzoneVectorStart, Quaternion.identity, transform); 
+        Instantiate(deadZoneIndicatorPrefab, deadzoneVectorBeep, Quaternion.identity, transform); 
+        Instantiate(deadZoneIndicatorPrefab, deadzoneVectorMiddle, Quaternion.identity, transform); 
+        Instantiate(deadZoneIndicatorPrefab, deadzoneVectorBoop, Quaternion.identity, transform);
+        Instantiate(deadZoneIndicatorPrefab, deadzoneVectorEnd, Quaternion.identity, transform); */
+
+        /*deadzoneVector = new Vector3(radius * Mathf.Cos(-deadZoneOffset), height, radius * Mathf.Sin(-deadZoneOffset));
         GameObject beginning = Instantiate(deadTickPrefab, deadzoneVector, Quaternion.identity, transform); //this is where the years come out /lowerbound on the timescale
         beginning.name = "beginning";
 
@@ -230,6 +271,7 @@ public class Donut : MonoBehaviour
         originVector = new Vector3(radius * Mathf.Cos(1), height, radius * Mathf.Sin(0));
         //GameObject deadzoneTick3 = Instantiate(deadTickPrefab, originVector, Quaternion.identity, transform);
         //deadzoneTick3.name = "origin";
+        */
     }
 
     public void zoomIn() {
