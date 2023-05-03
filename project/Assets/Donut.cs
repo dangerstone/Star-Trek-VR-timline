@@ -36,7 +36,7 @@ public class Donut : MonoBehaviour
 
         tickGap = computeTickGap(lowerbound, upperbound);
         makeDeadZoneTicks();
-        renderTickMarks(tickGap,0);
+        renderTickMarks(tickGap);
 
         flagHandler = instantiator.GetComponent<FlagHandler>();
         flagHandler.setFlags(radius, height, deadZoneSize, lowerbound, upperbound);
@@ -48,10 +48,10 @@ public class Donut : MonoBehaviour
         
     }
 
-    int getStartYear() {
+    public int getStartYear() {
         return lowerbound;
     }
-    int getEndYear() {
+    public int getEndYear() {
         return upperbound;
     }
    
@@ -68,24 +68,6 @@ public class Donut : MonoBehaviour
 
     public void updatePositions(float change)
     {
-        //Debug.Log("change: " + change + ". radiPerTick: " + radiansPerTick);
-        /*if(Mathf.Abs(change) > radiansPerTick) //We need to update the years
-        {
-            int yearsToChange = Mathf.FloorToInt(Mathf.Abs(change / radiansPerTick));
-            Debug.Log(yearsToChange +" years to change " +  " from " + change + "/" + radiansPerTick);
-            if(change < 0) //If negative then some way
-            {
-                lowerbound += yearsToChange;
-                upperbound += yearsToChange;
-            } else
-            {//Else the other way
-                lowerbound -= yearsToChange;
-                upperbound -= yearsToChange;
-            }
-            renderTickMarks(computeTickGap(lowerbound, upperbound),0f);
-        } else
-        {
-        }*/
             updateTickMarks(change);
     }
 
@@ -97,7 +79,7 @@ public class Donut : MonoBehaviour
             < 100 => 10,
             < 500 => 50,
             < 1000 => 100,
-            _ => 1000, // NOTE look at the actual timescope of ST to make better rules here maybe
+            _ => 200, // NOTE look at the actual timescope of ST to make better rules here maybe
         };
         Debug.Log("Gap: " + gap);
         return gap;
@@ -106,8 +88,6 @@ public class Donut : MonoBehaviour
     void updateTickMarks(float extraOfsset)
     {
         int childs = parent.transform.childCount;
-
-        IComparer myComparer = new FlagComparer();
         //Debug.Log("number children" + childs);
         //Debug.Log("Interval [" + lowerbound + "," + upperbound + "]");
         for (int i = 0 ; i < childs; i++)//Start with removing the outdated tickmarks
@@ -117,11 +97,12 @@ public class Donut : MonoBehaviour
             var angleBetweenTickAndOrigin = Vector3.Angle(originVector, child.transform.position);
             if(angleBetweenTickAndOrigin <= Degrees(deadZoneOffset))
             {
-                Debug.Log("Should kill " + child.name);
+                //Debug.Log("Should kill " + child.name);
                 Destroy(child.gameObject);
             }
 
         }
+        IComparer myComparer = new FlagComparer();
         GameObject[] allTicks = GameObject.FindGameObjectsWithTag("aTick"); //update such that the deleted are gone
         Array.Sort(allTicks, myComparer);//Sort by name such that first is lowest 
 
@@ -186,7 +167,7 @@ public class Donut : MonoBehaviour
     private GameObject firstBorn;
 
   
-    void renderTickMarks(int gap, float extraOffset) {
+    void renderTickMarks(int gap) {
         
         // compute how many ticks
         int noOfTicks = (int)(upperbound-lowerbound) / gap;
@@ -232,11 +213,47 @@ public class Donut : MonoBehaviour
         //deadzoneTick3.name = "origin";
     }
 
-    public void zoomIn() {
+    public void zoomIn(int delta) {
         // update lower and upperbound based on scaling
+        int newLower = getStartYear() + delta;
+        int newUpper = getEndYear() - delta; //decrease the interval
+        if(newUpper - newLower <= 5)
+        {
+            newLower = getStartYear(); //Idk how to make sure we dont go to small scale 
+            newUpper = getEndYear();
+        }//will still do the hole redraw even though there might not be changes to the interval...
+        //what happens if we zoom in at 3300? Idk so dont try
+        lowerbound = newLower;
+        upperbound = newUpper;
+        Debug.Log("Interval is now [" + lowerbound + "," + upperbound + "]");
+        RerenderScene();
     }
-    public void zoomOut() {
+    public void zoomOut(int delta) {
         // update lower and upperbound based on scaling
+        int newLower = getStartYear() - delta;
+        int newUpper = getEndYear() + delta; //increase the interval
+        if(newLower < 1900)
+        {
+            newLower = 1900; //cannot go more back than this but can still change upper
+        }
+        if(newUpper > 3500)
+        {
+            newUpper = 3500;//cannot go higher than this
+        }
+        if(getStartYear()==1900 && getEndYear() == 3500) { return; } //no need to rerender again
+        lowerbound = newLower; //zooming out
+        upperbound = newUpper;   //zooming out
+        Debug.Log("Interval is now [" + lowerbound + "," + upperbound + "]");
+        RerenderScene();
+    }
+
+    public void RerenderScene()
+    {
+        tickGap = computeTickGap(lowerbound, upperbound);
+        KillChildrenTicks();//remove all old tickMarks
+        flagHandler.KillAllFlags();//Remove flags
+        renderTickMarks(tickGap); //Redraw from scratch
+        flagHandler.setFlags(radius, height, deadZoneSize, lowerbound, upperbound);
     }
 
     float Degrees(float radian)
@@ -247,5 +264,16 @@ public class Donut : MonoBehaviour
     float Radians(float degree)
     {
         return degree * Mathf.PI / 180;
+    }
+
+    //Find all tickmarks and destroy the gameobjects. 
+    void KillChildrenTicks()
+    {
+        int childCount = parent.transform.childCount;
+        for(int i = childCount-1; i>=0; i--)
+        {
+            Transform child = (parent.transform.GetChild(i));
+            Destroy(child.gameObject);
+        }
     }
 }

@@ -28,18 +28,28 @@ public class canIhasControllers : MonoBehaviour
     {
         renderer = transform.GetComponent<Renderer>();
         originalColor = renderer.material.color;
-        Debug.Log("started");
     }
 
     // Update is called once per frame
-    float oldangle = 0f;
     void Update()
     {
         
         if (rightTouch && leftTouch)
         {
-            Debug.Log(distanceBetweenControllers);
-            Debug.Log("new dist " + Vector3.Distance(RightController.transform.position, LeftController.transform.position));
+            Debug.Log("old dist " +distanceBetweenControllers);
+            float newDist = Vector3.Distance(RightController.transform.position, LeftController.transform.position);
+            Debug.Log("new dist " + newDist);
+            float diff = newDist - distanceBetweenControllers; //if diff is negative zoom in. If positive zoom out
+            int delta = Mathf.FloorToInt(diff * 10);
+            Debug.Log("Delta " + delta);
+            if (delta < 0)
+            {
+                donutScript.zoomIn(delta);
+            } else
+            {
+                donutScript.zoomOut(delta);
+            }
+            distanceBetweenControllers = newDist;
         } else 
         if (leftTouch && !rightTouch)
         {
@@ -50,11 +60,11 @@ public class canIhasControllers : MonoBehaviour
             }
             
             //calculate angle from touchdownPoint
-            Vector2 Point_1 = new Vector2(touchDownStartPosition.x,touchDownStartPosition.z);
-            Vector2 Point_2 = new Vector2(LeftController.transform.position.x,LeftController.transform.position.z);
+            //Vector2 Point_1 = new Vector2(touchDownStartPosition.x,touchDownStartPosition.z);
+            //Vector2 Point_2 = new Vector2(LeftController.transform.position.x,LeftController.transform.position.z);
             //float angleBetween = Vector2.SignedAngle(Point_1, Point_2);
             float angleBetween = Vector3.SignedAngle(touchDownStartPosition, LeftController.transform.position, Vector3.up);
-            float angle = Mathf.Atan2(Point_2.y - Point_1.y, Point_2.x - Point_1.x) * 180 / Mathf.PI;
+            //float angle = Mathf.Atan2(Point_2.y - Point_1.y, Point_2.x - Point_1.x) * 180 / Mathf.PI;
             //Debug.Log("Left angle "+angle);
             //Debug.Log("Left angle2 "+angleBetween);
             donutScript.updatePositions(angleBetween*0.2f);
@@ -64,13 +74,13 @@ public class canIhasControllers : MonoBehaviour
         if (rightTouch && !leftTouch)
         {
             //float angleBetween = Vector3.Angle(rightpos, RightController.transform.position);
-            Vector2 Point_1 = new Vector2(touchDownStartPosition.x, touchDownStartPosition.z);
-            Vector2 Point_2 = new Vector2(RightController.transform.position.y, RightController.transform.position.z);
+            //Vector2 Point_1 = new Vector2(touchDownStartPosition.x, touchDownStartPosition.z);
+            //Vector2 Point_2 = new Vector2(RightController.transform.position.y, RightController.transform.position.z);
             //float angleBetween = Vector2.SignedAngle(Point_1, Point_2);
             float angleBetween = Vector3.SignedAngle(touchDownStartPosition, RightController.transform.position, Vector3.up);
             //Debug.Log("Right angle "+angleBetween);
-            float angle = Mathf.Atan2(Point_2.y - Point_1.y, Point_2.x - Point_1.x) * 180 / Mathf.PI;
-            bool toLeft = Point_2.x - Point_1.x >= 0;
+            //float angle = Mathf.Atan2(Point_2.y - Point_1.y, Point_2.x - Point_1.x) * 180 / Mathf.PI;
+            //bool toLeft = Point_2.x - Point_1.x >= 0;
             //Debug.Log("Right2Angle " + angle);
             //Debug.Log("going left " + toLeft);
             //Debug.Log("new-old " + (angle - oldangle));
@@ -126,14 +136,14 @@ public class canIhasControllers : MonoBehaviour
     }
 
     private bool rightTouch = false;
-    private Vector3 rightpos;
+    //private Vector3 rightpos;
     public void selectionRightDown(ActionBasedController controller)
     {
         rightTouch = true;
         touchDownStartPosition = controller.transform.position;
         Debug.Log("righttouch "+rightTouch);
         renderer.material.color = Color.blue;
-        rightpos = controller.transform.position;
+        //rightpos = controller.transform.position;
         if (leftTouch)
         {
             renderer.material.color = Color.green;

@@ -1817,7 +1817,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 988847895819782524, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
   m_PrefabInstance: {fileID: 2021388332}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2021388333}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe739ff4709c2574293560a73b27343a, type: 3}
@@ -2256,12 +2256,40 @@ PrefabInstance:
       propertyPath: deadTickPrefab
       value: 
       objectReference: {fileID: 1761222965043667370, guid: 098ebe4cc3cb08949b15a8c0c99434af, type: 3}
+    - target: {fileID: 988847895819782524, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
+      propertyPath: defaultLowerbound
+      value: 2350
+      objectReference: {fileID: 0}
+    - target: {fileID: 988847895819782524, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
+      propertyPath: defaultUpperbound
+      value: 2380
+      objectReference: {fileID: 0}
     - target: {fileID: 3681530541296321213, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
       propertyPath: m_Name
       value: Donut
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4200177607572459329, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
+    - {fileID: -8626409405706243463, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
+--- !u!1 &2021388333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3681530541296321213, guid: 6dd43a41cf49c5a46a979180e299665a, type: 3}
+  m_PrefabInstance: {fileID: 2021388332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2021388334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021388333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3b2086b5e2eb6419ad4ba78d21e615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instantiator: {fileID: 2021388333}
 --- !u!1 &2134840642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3681530541296321213, guid: 0cf025c138280ee4e94c39894daae60d, type: 3}
