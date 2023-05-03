@@ -75,7 +75,7 @@ public class canIhasControllers : MonoBehaviour
             //Debug.Log("going left " + toLeft);
             //Debug.Log("new-old " + (angle - oldangle));
             //oldangle = angle;
-            donutScript.updatePositions(angleBetween*0.5f);
+            donutScript.updatePositions(angleBetween*0.2f);
             touchDownStartPosition = RightController.transform.position;
         }
         

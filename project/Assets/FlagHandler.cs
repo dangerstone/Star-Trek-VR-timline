@@ -49,7 +49,7 @@ public class FlagHandler : MonoBehaviour
             var angleBetweenFlagAndOrigin = Vector3.Angle(originVector, child.transform.position);
             if (angleBetweenFlagAndOrigin <= (degrees(deadZoneOffset)))
             {
-                Debug.Log("Removing flag " + child.name);
+                //Debug.Log("Removing flag " + child.name);
                 Destroy(child.gameObject);
             }
 
@@ -112,7 +112,7 @@ public class FlagHandler : MonoBehaviour
                 previousYearRaised = false;
             }
             flag.transform.localScale = new Vector3(0.002f, 0.0025f, 0.0025f);
-            flag.transform.position += new Vector3(0, 0.75f, 0);
+            flag.transform.position += new Vector3(0, 0.65f, 0);
             setFlagText(flag, episode);
 
         }
@@ -185,7 +185,7 @@ public class FlagHandler : MonoBehaviour
                 previousRaised = false;
             }
             flag.transform.localScale = new Vector3(0.002f, 0.0025f, 0.0025f);
-            flag.transform.position += new Vector3(0, 0.75f, 0);
+            flag.transform.position += new Vector3(0, 0.65f, 0);
             setFlagText(flag, episode);
         }
 
