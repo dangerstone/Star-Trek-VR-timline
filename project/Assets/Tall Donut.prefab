@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6768870297052092193}
   - component: {fileID: 4527215963226735064}
   - component: {fileID: -8626409405706243463}
-  - component: {fileID: 5444004290277329590}
-  m_Layer: 1
+  - component: {fileID: 2134840650}
+  m_Layer: 0
   m_Name: Tall Donut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3681530541296321213}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 400, y: 400, z: 400}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3681530541296321213}
-  m_Mesh: {fileID: 2534964839176971238, guid: b064f067029e5ee44aebbb35d816821f, type: 3}
+  m_Mesh: {fileID: 4711208715938537054, guid: c5108270cf8b65f4c96980e3126533fd, type: 3}
 --- !u!23 &801655086322897078
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2534964839176971238, guid: b064f067029e5ee44aebbb35d816821f, type: 3}
+  m_Mesh: {fileID: 4711208715938537054, guid: c5108270cf8b65f4c96980e3126533fd, type: 3}
 --- !u!54 &4527215963226735064
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
-  m_SelectMode: 0
+  m_SelectMode: 1
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
@@ -159,19 +159,7 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3681530541296321213}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -254,7 +242,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &5444004290277329590
+--- !u!114 &2134840650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,7 +251,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3681530541296321213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 879f516ab3b736040b3815720b8e0dae, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a8a48d59a5153f4abe3716cc87d91aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testInstance: {fileID: 6659992350027422703, guid: 7836ef8f413f8f84aaf7ce0ee5aee886, type: 3}
+  LeftController: {fileID: 0}
+  RightController: {fileID: 0}
+  donutScript: {fileID: 0}
