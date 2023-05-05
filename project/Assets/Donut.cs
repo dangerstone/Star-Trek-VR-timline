@@ -26,6 +26,8 @@ public class Donut : MonoBehaviour
     public GameObject instantiator; // public FlagHandler flagHandler;
     private FlagHandler flagHandler;
 
+    private Vector3 originVector;
+
     private int tickGap;
 
     Vector3 donutCenter = new Vector3(0, 0, 0);
@@ -37,6 +39,8 @@ public class Donut : MonoBehaviour
         upperbound = defaultUpperbound;
         deadZoneSize = defaultDeadzoneSize;
         deadZoneOffset = deadZoneSize / 2;
+
+        originVector = new Vector3(radius * Mathf.Cos(1), height, radius * Mathf.Sin(0));
 
         tickGap = computeTickGap(lowerbound, upperbound);
         makeDeadZoneTicks();
@@ -78,7 +82,7 @@ public class Donut : MonoBehaviour
     int computeTickGap(int lower, int upper) {
         int interval = upper - lower;
         int gap = interval switch {
-            < 10 => 1,
+            <= 10 => 1,
             < 50 => 5,
             < 100 => 10,
             < 500 => 50,
@@ -92,20 +96,23 @@ public class Donut : MonoBehaviour
     void updateTickMarks(float extraOfsset)
     {
         int childs = tickParent.transform.childCount;
-        for (int i = 0 ; i < childs; i++)//Start with removing the outdated tickmarks
+        for (int i = childs-1 ; i >= 0; i--)//Start with removing the outdated tickmarks
         {
             Transform child = (tickParent.transform.GetChild(i));
             child.RotateAround(new Vector3(0, 0, 0), Vector3.up, Degrees(extraOfsset));
             var angleBetweenTickAndOrigin = Vector3.Angle(originVector, child.transform.position);
             if(angleBetweenTickAndOrigin <= Degrees(deadZoneOffset))
             {
-                //Debug.Log("Should kill " + child.name);
+                Debug.Log("Should kill " + child.name);
                 Destroy(child.gameObject);
             }
+            Debug.Log("Child number " + i);
 
         }
         IComparer myComparer = new FlagComparer();
         GameObject[] allTicks = GameObject.FindGameObjectsWithTag("aTick"); //update such that the deleted are gone
+        Debug.Log("Tick count " + allTicks.Length);
+
         Array.Sort(allTicks, myComparer);//Sort by name such that first is lowest 
 
         flagHandler.updateFlagPositions(extraOfsset);
@@ -164,7 +171,7 @@ public class Donut : MonoBehaviour
         }
     }
     private Vector3 deadzoneVector;
-    private Vector3 originVector;
+    
     private float deadZoneOffset;
     private GameObject firstBorn;
 
@@ -227,11 +234,11 @@ public class Donut : MonoBehaviour
         // update lower and upperbound based on scaling
         int newLower = getStartYear() + delta;
         int newUpper = getEndYear() - delta; //decrease the interval
-        if(newUpper - newLower <= 5)
-        {
-            newLower = getStartYear(); //Idk how to make sure we dont go to small scale 
-            newUpper = getEndYear();
-        }//will still do the hole redraw even though there might not be changes to the interval...
+        // if(newUpper - newLower <= 5)
+        // {
+        //     newLower = getStartYear(); //Idk how to make sure we dont go to small scale 
+        //     newUpper = getEndYear();
+        //}//will still do the hole redraw even though there might not be changes to the interval...
         //what happens if we zoom in at 3300? Idk so dont try
         lowerbound = newLower;
         upperbound = newUpper;
@@ -242,14 +249,14 @@ public class Donut : MonoBehaviour
         // update lower and upperbound based on scaling
         int newLower = getStartYear() - delta;
         int newUpper = getEndYear() + delta; //increase the interval
-        if(newLower < 1900)
-        {
-            newLower = 1900; //cannot go more back than this but can still change upper
-        }
-        if(newUpper > 3500)
-        {
-            newUpper = 3500;//cannot go higher than this
-        }
+        // if(newLower < 1900)
+        // {
+        //     newLower = 1900; //cannot go more back than this but can still change upper
+        // }
+        // if(newUpper > 3500)
+        // {
+        //     newUpper = 3500;//cannot go higher than this
+        // }
         if(getStartYear()==1900 && getEndYear() == 3500) { return; } //no need to rerender again
         lowerbound = newLower; //zooming out
         upperbound = newUpper;   //zooming out

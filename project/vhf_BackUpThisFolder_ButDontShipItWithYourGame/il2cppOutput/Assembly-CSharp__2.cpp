@@ -4555,8 +4555,8 @@ struct DebugUIBuilder_tC18B19AE08445BA1378C7DABB0E4858217E02E71  : public MonoBe
 // Donut
 struct Donut_t50024B53C70E86FF131D33C8C3B4D671CC872B38  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
-	// UnityEngine.GameObject Donut::parent
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___parent_4;
+	// UnityEngine.GameObject Donut::tickParent
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___tickParent_4;
 	// System.Int32 Donut::defaultLowerbound
 	int32_t ___defaultLowerbound_5;
 	// System.Int32 Donut::defaultUpperbound
@@ -4577,22 +4577,28 @@ struct Donut_t50024B53C70E86FF131D33C8C3B4D671CC872B38  : public MonoBehaviour_t
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___tickPrefab_13;
 	// UnityEngine.GameObject Donut::deadTickPrefab
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___deadTickPrefab_14;
+	// UnityEngine.GameObject Donut::deadZoneIndicatorPrefab
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___deadZoneIndicatorPrefab_15;
+	// UnityEngine.GameObject Donut::deadZoneParent
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___deadZoneParent_16;
 	// UnityEngine.GameObject Donut::instantiator
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___instantiator_15;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___instantiator_17;
 	// FlagHandler Donut::flagHandler
-	FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* ___flagHandler_16;
+	FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* ___flagHandler_18;
 	// System.Int32 Donut::tickGap
-	int32_t ___tickGap_17;
+	int32_t ___tickGap_19;
+	// UnityEngine.Vector3 Donut::donutCenter
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___donutCenter_20;
 	// System.Single Donut::radiansPerTick
-	float ___radiansPerTick_18;
+	float ___radiansPerTick_21;
 	// UnityEngine.Vector3 Donut::deadzoneVector
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___deadzoneVector_19;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___deadzoneVector_22;
 	// UnityEngine.Vector3 Donut::originVector
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___originVector_20;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___originVector_23;
 	// System.Single Donut::deadZoneOffset
-	float ___deadZoneOffset_21;
+	float ___deadZoneOffset_24;
 	// UnityEngine.GameObject Donut::firstBorn
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___firstBorn_22;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___firstBorn_25;
 };
 
 // DropdownSample
@@ -9717,8 +9723,8 @@ inline Donut_t50024B53C70E86FF131D33C8C3B4D671CC872B38* GameObject_GetComponent_
 }
 // System.Single Donut::getRadianPerTick()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Donut_getRadianPerTick_m02180A70988617CB085B55CA1DE03AF49E31D5FC_inline (Donut_t50024B53C70E86FF131D33C8C3B4D671CC872B38* __this, const RuntimeMethod* method) ;
-// System.Void Donut::updatePositions(System.Single)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Donut_updatePositions_mBB9EB8620444092E7D7FD2A0CC528DAE1E90C08A (Donut_t50024B53C70E86FF131D33C8C3B4D671CC872B38* __this, float ___0_change, const RuntimeMethod* method) ;
+// System.Void Donut::zoomOut(System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Donut_zoomOut_m09F0086B1FC8ECF4C45B5743EC89BF9A5FE5D8B7 (Donut_t50024B53C70E86FF131D33C8C3B4D671CC872B38* __this, int32_t ___0_delta, const RuntimeMethod* method) ;
 // TMPro.TMP_InputField/SubmitEvent TMPro.TMP_InputField::get_onSubmit()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR SubmitEvent_tF7E2843B6A79D94B8EEEA259707F77BD1773B500* TMP_InputField_get_onSubmit_mAA494FA0B3CFFB2916B399BD5D87C2E1AA637B90_inline (TMP_InputField_t3488E0EE8C3DF56C6A328EC95D1BEEA2DF4A7D5F* __this, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Events.UnityAction`1<System.String>::.ctor(System.Object,System.IntPtr)
@@ -18730,7 +18736,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void testChange_Start_m02646BC5C2CB0C507BB801
 // System.Void testChange::Update()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void testChange_Update_m6FA6CA7AD4679A990B1232FB58CE162EAED97C4B (testChange_t5635D89E2498E82CA490D8EA1D90FF3C7577FBF6* __this, const RuntimeMethod* method) 
 {
-	float V_0 = 0.0f;
 	{
 		// if(Time.time - lastTime > 0.2f && Time.time-firstTime > 5f)
 		float L_0;
@@ -18738,7 +18743,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void testChange_Update_m6FA6CA7AD4679A990B123
 		float L_1 = __this->___lastTime_4;
 		if ((!(((float)((float)il2cpp_codegen_subtract(L_0, L_1))) > ((float)(0.200000003f)))))
 		{
-			goto IL_0050;
+			goto IL_004a;
 		}
 	}
 	{
@@ -18747,7 +18752,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void testChange_Update_m6FA6CA7AD4679A990B123
 		float L_3 = __this->___firstTime_5;
 		if ((!(((float)((float)il2cpp_codegen_subtract(L_2, L_3))) > ((float)(5.0f)))))
 		{
-			goto IL_0050;
+			goto IL_004a;
 		}
 	}
 	{
@@ -18756,19 +18761,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void testChange_Update_m6FA6CA7AD4679A990B123
 		NullCheck(L_4);
 		float L_5;
 		L_5 = Donut_getRadianPerTick_m02180A70988617CB085B55CA1DE03AF49E31D5FC_inline(L_4, NULL);
-		V_0 = L_5;
-		// donut.updatePositions(-radi*0.01f);
+		// donut.zoomOut(10);
 		Donut_t50024B53C70E86FF131D33C8C3B4D671CC872B38* L_6 = __this->___donut_7;
-		float L_7 = V_0;
 		NullCheck(L_6);
-		Donut_updatePositions_mBB9EB8620444092E7D7FD2A0CC528DAE1E90C08A(L_6, ((float)il2cpp_codegen_multiply(((-L_7)), (0.00999999978f))), NULL);
+		Donut_zoomOut_m09F0086B1FC8ECF4C45B5743EC89BF9A5FE5D8B7(L_6, ((int32_t)10), NULL);
 		// lastTime = Time.time;
-		float L_8;
-		L_8 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
-		__this->___lastTime_4 = L_8;
+		float L_7;
+		L_7 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
+		__this->___lastTime_4 = L_7;
 	}
 
-IL_0050:
+IL_004a:
 	{
 		// }
 		return;
@@ -29288,7 +29291,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Donut_getRadianPerTick_m021
 {
 	{
 		// return radiansPerTick;
-		float L_0 = __this->___radiansPerTick_18;
+		float L_0 = __this->___radiansPerTick_21;
 		return L_0;
 	}
 }

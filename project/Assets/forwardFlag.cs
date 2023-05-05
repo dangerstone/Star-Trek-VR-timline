@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class forwardFlag : MonoBehaviour
 {
+    private int smoothval;
     // Start is called before the first frame update
     Transform myTransform;
     void Start()
@@ -14,18 +15,29 @@ public class forwardFlag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (smoothval < 0)
+        {
+            transform.position -= transform.forward *0.075f;
+            smoothval ++;
+        }
+        if (smoothval > 0)
+        {
+            transform.position += transform.forward *0.075f;
+            smoothval --;
+        }
     }
 
     public void moveForward()
     {
-        transform.position -= transform.forward *1.2f;
+        smoothval -= 12;
+        //transform.position -= transform.forward *1.2f;
         Debug.Log("moving forward");
     }
 
     public void moveBack()
     {
-        transform.position += transform.forward*1.2f;
+        smoothval += 12;
+        //transform.position += transform.forward*1.2f;
         Debug.Log("moving back");
     }
 }

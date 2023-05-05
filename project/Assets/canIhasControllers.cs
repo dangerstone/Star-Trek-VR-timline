@@ -27,7 +27,7 @@ public class canIhasControllers : MonoBehaviour
     void Start()
     {
         renderer = transform.GetComponent<Renderer>();
-        originalColor = renderer.material.color;
+        //originalColor = renderer.shader.;
     }
 
     // Update is called once per frame
@@ -44,10 +44,10 @@ public class canIhasControllers : MonoBehaviour
             Debug.Log("Delta " + delta);
             if (delta < 0)
             {
-                donutScript.zoomIn(delta);
+               // donutScript.zoomIn(delta);
             } else
             {
-                donutScript.zoomOut(delta);
+                //donutScript.zoomOut(delta);
             }
             distanceBetweenControllers = newDist;
         } else 
