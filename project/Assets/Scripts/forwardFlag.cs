@@ -31,13 +31,13 @@ public class forwardFlag : MonoBehaviour
     {
         smoothval -= 12;
         //transform.position -= transform.forward *1.2f;
-        Debug.Log("moving forward");
+        //Debug.Log("moving forward");
     }
 
     public void moveBack()
     {
         smoothval += 12;
         //transform.position += transform.forward*1.2f;
-        Debug.Log("moving back");
+        //Debug.Log("moving back");
     }
 }
