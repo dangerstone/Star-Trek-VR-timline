@@ -39,7 +39,7 @@ public class Donut : MonoBehaviour
         upperbound = defaultUpperbound;
         deadZoneSize = defaultDeadzoneSize;
         deadZoneOffset = deadZoneSize / 2;
-        ZoomState = 6;
+        ZoomState = 1;
 
         originVector = new Vector3(radius * Mathf.Cos(1), height, radius * Mathf.Sin(0));
 
