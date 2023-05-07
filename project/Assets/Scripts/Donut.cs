@@ -296,7 +296,7 @@ public class Donut : MonoBehaviour
     }
 
     [SerializeField]
-    private int ZoomState;
+    private int ZoomState = 1;
 
     public void ZoomInSwitch()
     {
@@ -318,7 +318,7 @@ public class Donut : MonoBehaviour
         };
 
         int midpoint = (int)(upperbound + lowerbound) / 2; //The current center of the view
-        Debug.Log("ZoomIn. ZoomState is " + ZoomState + ". yearchange is " + yearchange + " around midpoint " + midpoint);
+        Debug.Log("ZoomIn. ZoomState was " + ZoomState + " now " + ZoomState + 1 + ". yearchange is " + yearchange + " around midpoint " + midpoint + ". [" + lowerbound + "," + upperbound + "]");
 
         if (ZoomState == 1) //the closests zoom in. Tickgap should be 1. Interval size 10
         {
@@ -394,7 +394,7 @@ public class Donut : MonoBehaviour
         }
         
         int midpoint = (int)(upperbound + lowerbound) / 2;
-        Debug.Log("ZoomOut. ZoomState is " + ZoomState + ". yearchange is " + yearchange + " around midpoint " + midpoint + " [" + lowerbound + "," + upperbound + "]");
+        Debug.Log("ZoomOut. ZoomState was " + ZoomState + " now " + ZoomState + 1 + ". yearchange is " + yearchange + " around midpoint " + midpoint + ". [" + lowerbound + "," + upperbound + "]");
         upperbound = midpoint + yearchange;
         lowerbound = midpoint - yearchange;
         ZoomState += 1;
