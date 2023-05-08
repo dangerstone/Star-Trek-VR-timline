@@ -20,13 +20,19 @@ public class testChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(Time.time - lastTime > 0.2f && Time.time-firstTime > 5f)
+        if (Time.time - firstTime > 8f && Time.time - firstTime < 12f)
+        {
+           // donut.ZoomInSwitch();
+           // lastTime = Time.time;
+        }
+        if (Time.time - lastTime > 2f && Time.time-firstTime > 4f)
         {
             float radi = donut.getRadianPerTick();
             //donut.updatePositions(-radi*0.01f);
-            donut.zoomOut(10);
+            //donut.zoomOut(10);
+            donut.ZoomInSwitch();
             lastTime = Time.time;
         }
+        
     }
 }

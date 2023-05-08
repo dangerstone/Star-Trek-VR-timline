@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 
 public class Donut : MonoBehaviour
 {
@@ -12,8 +12,8 @@ public class Donut : MonoBehaviour
     public int defaultUpperbound;
     public float defaultDeadzoneSize;
 
-    private int lowerbound;
-    private int upperbound;
+    public int lowerbound;
+    public int upperbound;
     private float deadZoneSize;
 
     public float radius;
@@ -38,6 +38,7 @@ public class Donut : MonoBehaviour
         upperbound = defaultUpperbound;
         deadZoneSize = defaultDeadzoneSize;
         deadZoneOffset = deadZoneSize / 2;
+        ZoomState = 1;
 
         originVector = new Vector3(radius * Mathf.Cos(1), height, radius * Mathf.Sin(0));
 
@@ -82,10 +83,10 @@ public class Donut : MonoBehaviour
         int interval = upper - lower;
         int gap = interval switch {
             <= 10 => 1,
-            < 50 => 5,
-            < 100 => 10,
-            < 500 => 50,
-            < 1000 => 100,
+            <= 50 => 5,
+            <= 100 => 10,
+            <= 500 => 50,
+            <= 1000 => 100,
             _ => 200, // NOTE look at the actual timescope of ST to make better rules here maybe
         };
         Debug.Log("Gap: " + gap);
@@ -292,4 +293,111 @@ public class Donut : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+
+    [SerializeField]
+    private int ZoomState = 1;
+
+    public void ZoomInSwitch()
+    {
+        if (ZoomState == 1) //the closests zoom in. Tickgap should be 1. Interval size 10
+        {
+            //we cannot zoom anymore in, so zoom in should do nothing
+            return;
+        }
+        //else we want to know what we should change the scope to
+
+        int yearchange = ZoomState switch
+        {
+            <= 1 => 0, //Dummy case that should not happen
+            <= 2 => 5, // second closetst zoom.  We want to zoom in to ZoomState 1 where the interval is 10
+            <= 3 => 25,
+            <= 4 => 50,
+            <= 5 => 250,
+            _ => 1500, 
+        };
+
+        int midpoint = (int)(upperbound + lowerbound) / 2; //The current center of the view
+        Debug.Log("ZoomIn. ZoomState was " + ZoomState + " now " + ZoomState + 1 + ". yearchange is " + yearchange + " around midpoint " + midpoint + ". [" + lowerbound + "," + upperbound + "]");
+
+        if (ZoomState == 1) //the closests zoom in. Tickgap should be 1. Interval size 10
+        {
+            //we cannot zoom anymore ind, so zoom in should do nothing
+            return;
+
+        } else if (ZoomState==2) // second closetst zoom. Tickgap should be 5. Interval should be size 50?
+        {
+            //we want to zoom in to ~5? around the midpoint
+            upperbound = midpoint + 5;
+            lowerbound = midpoint - 5; //will this be off by one??
+            ZoomState = 1; //we're now at the lowest state
+            RerenderScene();
+
+        } else if (ZoomState == 3) { //TickGap 10. Interval size 100
+            //we want to zoom in to ~25 around midpoint
+            upperbound = midpoint + 25;
+            lowerbound = midpoint - 25;
+            ZoomState = 2;
+            RerenderScene();
+        
+        } else if (ZoomState == 4) //TickGap 50 Interval size 500
+        {
+            //zoom in to level 3
+            upperbound = midpoint + 50;
+            lowerbound = midpoint - 50;
+            ZoomState = 3;
+            RerenderScene();
+
+        } else if (ZoomState == 5) //Tickgap 100 Interval size 1000. 
+        {
+            //zoom in to level 4
+            upperbound = midpoint + 250;
+            lowerbound = midpoint - 250;
+            ZoomState = 4;
+            RerenderScene();
+
+        } else if (ZoomState == 6) //Tickgap 500. Interval 3000 //The highest 
+        {
+            //zoom in to level 5
+            upperbound = midpoint + 500;
+            lowerbound = midpoint - 500;
+            ZoomState = 5;
+            RerenderScene();
+        } else if (ZoomState > 6) //We should ideally not go here
+        {
+            //From ZoomState 6 we can only go down, so we should never zoom out to zoom state 7
+            Debug.Log("How did you get here. ZoomState: " + ZoomState);
+        }
+            
+    }
+
+    public void ZoomOutSwitch()
+    {
+        if(ZoomState == 6)
+        {
+            return; //dont zoom out any more
+        }
+
+        int yearchange = ZoomState switch
+        {
+            5 => 1500, //we want to zoom out to level 6 [0,3000]
+            4 => 500,    //zoom out to level 5 which is [0,1000]
+            3 => 250,    //zoom out to level 4 which is [0,500]
+            2 => 50,     //zoom out to level 3 which is [0,100]
+            1 => 25,     //zoom out to level 2 which is [0,50]
+            _ => -1,     //please dont go here
+        };
+
+        if(yearchange == -1)
+        {
+            Debug.Log("Yearchange is -1. How did you get here? ZoomState: " + ZoomState);
+        }
+        
+        int midpoint = (int)(upperbound + lowerbound) / 2;
+        Debug.Log("ZoomOut. ZoomState was " + ZoomState + " now " + ZoomState + 1 + ". yearchange is " + yearchange + " around midpoint " + midpoint + ". [" + lowerbound + "," + upperbound + "]");
+        upperbound = midpoint + yearchange;
+        lowerbound = midpoint - yearchange;
+        ZoomState += 1;
+        RerenderScene();
+    }
+
 }

@@ -11,12 +11,10 @@ public class canIhasControllers : MonoBehaviour
     [SerializeField]
     private ActionBasedController RightController;
 
-    private bool touchDown;
-    private bool twoTouchDown;
+
 
     private Vector3 touchDownStartPosition;
 
-    private Renderer renderer;
     private Color originalColor;
 
     [SerializeField]
@@ -26,8 +24,7 @@ public class canIhasControllers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        renderer = transform.GetComponent<Renderer>();
-        //originalColor = renderer.shader.;
+        
     }
 
     // Update is called once per frame
@@ -41,13 +38,18 @@ public class canIhasControllers : MonoBehaviour
             Debug.Log("new dist " + newDist);
             float diff = newDist - distanceBetweenControllers; //if diff is negative zoom in. If positive zoom out
             int delta = Mathf.FloorToInt(diff * 10);
-            Debug.Log("Delta " + delta);
-            if (delta < 0)
+            Debug.Log("new dist - olddist =  " + newDist + "-" + distanceBetweenControllers + " = " + diff + ".\n Delta is " + delta);
+            //int delta = Mathf.FloorToInt(Mathf.Exp(diff * 20));
+            //int delta2 = Mathf.FloorToInt(Mathf.Exp(diff * 90));
+            //int delta3 = Mathf.FloorToInt(d+iff * 50);
+            //Debug.Log("Delta " + delta);
+            float offset = 0.5f; //something for keeping un-intended jitters undetected
+            if (delta < 0 - offset)
             {
-               // donutScript.zoomIn(delta);
-            } else
+               donutScript.ZoomOutSwitch();
+            } else if (delta > 0 + offset)
             {
-                //donutScript.zoomOut(delta);
+                donutScript.ZoomInSwitch();
             }
             distanceBetweenControllers = newDist;
         } else 
@@ -91,33 +93,6 @@ public class canIhasControllers : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
-
-/*    public void selectionDown(ActionBasedController controller)
-    {
-        *//*if (touchDown)
-        {
-            Debug.Log("Two touching");
-            twoTouchDown = true;
-            if (renderer != null && renderer.material != null)
-            {
-                renderer.material.color = Color.green;
-            }
-        } else
-        {
-            Debug.Log("One touching");
-        }*//*
-        renderer.material.color = Color.blue;
-        touchDownStartPosition = controller.transform.position;
-        touchDown = true;
-        Debug.Log("selected " + LeftController.transform.position.ToString());
-        
-        Debug.Log("selected " + RightController.transform.position.ToString());
-
-    }*/
 
     private float distanceBetweenControllers = 0f;
 
@@ -126,11 +101,9 @@ public class canIhasControllers : MonoBehaviour
         LeftController = controller;
         touchDownStartPosition = controller.transform.position;
         leftTouch = true;
-        renderer.material.color = Color.blue;
-        Debug.Log("leftouch "+leftTouch);
+        //Debug.Log("leftouch "+leftTouch);
         if (rightTouch)
         {
-            renderer.material.color = Color.green;
             distanceBetweenControllers = Vector3.Distance(RightController.transform.position, LeftController.transform.position);
         }
     }
@@ -141,12 +114,10 @@ public class canIhasControllers : MonoBehaviour
     {
         rightTouch = true;
         touchDownStartPosition = controller.transform.position;
-        Debug.Log("righttouch "+rightTouch);
-        renderer.material.color = Color.blue;
+        //Debug.Log("righttouch "+rightTouch);
         //rightpos = controller.transform.position;
         if (leftTouch)
         {
-            renderer.material.color = Color.green;
             distanceBetweenControllers = Vector3.Distance(RightController.transform.position, LeftController.transform.position);
         }
     }
@@ -156,41 +127,14 @@ public class canIhasControllers : MonoBehaviour
     public void rightUp()
     {
         rightTouch = false;
-        Debug.Log("righttouch "+rightTouch + ". LeftTouch is " + leftTouch);
-        if (!leftTouch)
-        {
-            renderer.material.color = originalColor;
-        }
+        //Debug.Log("righttouch "+rightTouch + ". LeftTouch is " + leftTouch);
     }
 
     public void leftUp()
     {
         leftTouch = false;
-        Debug.Log("leftouch "+leftTouch + ". Righttouch is " + rightTouch);
-        if (!rightTouch)
-        {
-            renderer.material.color = originalColor;
-        }
+        //Debug.Log("leftouch "+leftTouch + ". Righttouch is " + rightTouch);
     }
 
-    public void selectionUp()
-    {
-       /* if (twoTouchDown)
-        {
-            twoTouchDown = false;
-            if (renderer != null && renderer.material != null)
-            {
-            }
-            Debug.Log("no more two touching");
-            //one should still be touching
-          
-        } else { //on selectUp where only touching they should both be false
-                renderer.material.color = originalColor;
-
-        }*/
-            renderer.material.color = originalColor;
-            touchDown = false;
-            Debug.Log("no one touching");
-    }
 
 }
