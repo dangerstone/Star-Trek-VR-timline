@@ -20,7 +20,6 @@ public class Donut : MonoBehaviour
     public float height;
 
     public GameObject tickPrefab;
-    public GameObject deadTickPrefab;
     public GameObject deadZoneIndicatorPrefab;
     public GameObject deadZoneParent;
     public GameObject instantiator; // public FlagHandler flagHandler;

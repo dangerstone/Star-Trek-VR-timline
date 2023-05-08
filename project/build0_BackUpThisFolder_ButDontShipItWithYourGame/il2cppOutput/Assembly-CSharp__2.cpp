@@ -392,8 +392,6 @@ struct FontData_tB8E562846C6CB59C43260F69AE346B9BF3157224;
 struct GameObject_t76FEDD663AB33C991A9C9A23129337651094216F;
 // UnityEngine.UI.Graphic
 struct Graphic_tCBFCA4585A19E2B75465AECFEAC43F4016BF7931;
-// HighlightFlag
-struct HighlightFlag_t005D25C54BC041505A2D01FF9FA49A607F7F4C79;
 // System.IAsyncResult
 struct IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5;
 // System.Collections.IComparer
@@ -4082,30 +4080,28 @@ struct Donut_t50024B53C70E86FF131D33C8C3B4D671CC872B38  : public MonoBehaviour_t
 	float ___height_12;
 	// UnityEngine.GameObject Donut::tickPrefab
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___tickPrefab_13;
-	// UnityEngine.GameObject Donut::deadTickPrefab
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___deadTickPrefab_14;
 	// UnityEngine.GameObject Donut::deadZoneIndicatorPrefab
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___deadZoneIndicatorPrefab_15;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___deadZoneIndicatorPrefab_14;
 	// UnityEngine.GameObject Donut::deadZoneParent
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___deadZoneParent_16;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___deadZoneParent_15;
 	// UnityEngine.GameObject Donut::instantiator
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___instantiator_17;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___instantiator_16;
 	// FlagHandler Donut::flagHandler
-	FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* ___flagHandler_18;
+	FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* ___flagHandler_17;
 	// UnityEngine.Vector3 Donut::originVector
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___originVector_19;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___originVector_18;
 	// System.Int32 Donut::tickGap
-	int32_t ___tickGap_20;
+	int32_t ___tickGap_19;
 	// UnityEngine.Vector3 Donut::donutCenter
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___donutCenter_21;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___donutCenter_20;
 	// System.Single Donut::radiansPerTick
-	float ___radiansPerTick_22;
+	float ___radiansPerTick_21;
 	// UnityEngine.Vector3 Donut::deadzoneVector
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___deadzoneVector_23;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___deadzoneVector_22;
 	// System.Single Donut::deadZoneOffset
-	float ___deadZoneOffset_24;
+	float ___deadZoneOffset_23;
 	// UnityEngine.GameObject Donut::firstBorn
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___firstBorn_25;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___firstBorn_24;
 };
 
 // DropdownSample
@@ -4167,15 +4163,6 @@ struct FollowRotation_t39F7A94DCADC79550BC745CB90FE341DDA3A606E  : public MonoBe
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___leader_4;
 	// UnityEngine.Quaternion FollowRotation::rotationOffset
 	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___rotationOffset_5;
-};
-
-// HighlightFlag
-struct HighlightFlag_t005D25C54BC041505A2D01FF9FA49A607F7F4C79  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
-{
-	// UnityEngine.Object HighlightFlag::testInstance
-	Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___testInstance_4;
-	// UnityEngine.Color HighlightFlag::startcolor
-	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___startcolor_5;
 };
 
 // LocalizedHaptics
@@ -6620,10 +6607,6 @@ struct DebugUIBuilder_tC18B19AE08445BA1378C7DABB0E4858217E02E71_StaticFields
 
 // FollowRotation
 
-// HighlightFlag
-
-// HighlightFlag
-
 // LocalizedHaptics
 
 // LocalizedHaptics
@@ -8157,12 +8140,6 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_Rotate_m35B44707FE16FF8015D519D8C162C0B4A85D6D1F (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_axis, float ___1_angle, const RuntimeMethod* method) ;
 // UnityEngine.Vector3 UnityEngine.Transform::get_forward()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Transform_get_forward_mFCFACF7165FDAB21E80E384C494DF278386CEE2F (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, const RuntimeMethod* method) ;
-// UnityEngine.Color UnityEngine.Material::get_color()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F Material_get_color_mA4B7D4B96200D9D8B4F36BF19957E9DA81071DBB (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* __this, const RuntimeMethod* method) ;
-// UnityEngine.Color UnityEngine.Color::get_yellow()
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline (const RuntimeMethod* method) ;
-// UnityEngine.Object UnityEngine.Object::Instantiate(UnityEngine.Object)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* Object_Instantiate_m8C504E8CCCA0816BEB5BB431A0BCECE17D217A0B (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___0_original, const RuntimeMethod* method) ;
 // System.Single UnityEngine.Time::get_time()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B (const RuntimeMethod* method) ;
 // T UnityEngine.GameObject::GetComponent<Donut>()
@@ -12425,7 +12402,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Donut_Start_mE47DD57EDAFB69DFA9D87DD20EC
 		__this->___deadZoneSize_10 = L_2;
 		// deadZoneOffset = deadZoneSize / 2;
 		float L_3 = __this->___deadZoneSize_10;
-		__this->___deadZoneOffset_24 = ((float)(L_3/(2.0f)));
+		__this->___deadZoneOffset_23 = ((float)(L_3/(2.0f)));
 		// originVector = new Vector3(radius * Mathf.Cos(1), height, radius * Mathf.Sin(0));
 		float L_4 = __this->___radius_11;
 		float L_5;
@@ -12437,27 +12414,27 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Donut_Start_mE47DD57EDAFB69DFA9D87DD20EC
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		memset((&L_9), 0, sizeof(L_9));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_9), ((float)il2cpp_codegen_multiply(L_4, L_5)), L_6, ((float)il2cpp_codegen_multiply(L_7, L_8)), /*hidden argument*/NULL);
-		__this->___originVector_19 = L_9;
+		__this->___originVector_18 = L_9;
 		// tickGap = computeTickGap(lowerbound, upperbound);
 		int32_t L_10 = __this->___lowerbound_8;
 		int32_t L_11 = __this->___upperbound_9;
 		int32_t L_12;
 		L_12 = Donut_computeTickGap_mD8D2E3C2A2761A013CA8D77166D797CD5B7D69BB(__this, L_10, L_11, NULL);
-		__this->___tickGap_20 = L_12;
+		__this->___tickGap_19 = L_12;
 		// makeDeadZoneTicks();
 		Donut_makeDeadZoneTicks_mBFAF0174AF293DA2A3BEC82AB6FF59C18F767F6B(__this, NULL);
 		// renderTickMarks(tickGap);
-		int32_t L_13 = __this->___tickGap_20;
+		int32_t L_13 = __this->___tickGap_19;
 		Donut_renderTickMarks_mE5098B385BBEEF85975E2731EAA2F35508D7EBA4(__this, L_13, NULL);
 		// flagHandler = instantiator.GetComponent<FlagHandler>();
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = __this->___instantiator_17;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = __this->___instantiator_16;
 		NullCheck(L_14);
 		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_15;
 		L_15 = GameObject_GetComponent_TisFlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68_m354F913D64C609433078878BE21D3591D06DA10C(L_14, GameObject_GetComponent_TisFlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68_m354F913D64C609433078878BE21D3591D06DA10C_RuntimeMethod_var);
-		__this->___flagHandler_18 = L_15;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___flagHandler_18), (void*)L_15);
+		__this->___flagHandler_17 = L_15;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___flagHandler_17), (void*)L_15);
 		// flagHandler.setFlags(radius, height, deadZoneSize, lowerbound, upperbound);
-		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_16 = __this->___flagHandler_18;
+		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_16 = __this->___flagHandler_17;
 		float L_17 = __this->___radius_11;
 		float L_18 = __this->___height_12;
 		float L_19 = __this->___deadZoneSize_10;
@@ -12509,7 +12486,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Donut_getRadianPerTick_m02180A70988617C
 {
 	{
 		// return radiansPerTick;
-		float L_0 = __this->___radiansPerTick_22;
+		float L_0 = __this->___radiansPerTick_21;
 		return L_0;
 	}
 }
@@ -12733,7 +12710,7 @@ IL_0018:
 		NullCheck(L_7);
 		Transform_RotateAround_m489C5BE8B8B15D0A5F4863DE6D23FF2CC8FA76C6(L_7, L_8, L_9, L_11, NULL);
 		// var angleBetweenTickAndOrigin = Vector3.Angle(originVector, child.transform.position);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12 = __this->___originVector_19;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12 = __this->___originVector_18;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13 = V_3;
 		NullCheck(L_13);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14;
@@ -12744,7 +12721,7 @@ IL_0018:
 		float L_16;
 		L_16 = Vector3_Angle_mB16906B482814C140FE5BA9D041D2DC11E42A68D_inline(L_12, L_15, NULL);
 		// if(angleBetweenTickAndOrigin <= Degrees(deadZoneOffset))
-		float L_17 = __this->___deadZoneOffset_24;
+		float L_17 = __this->___deadZoneOffset_23;
 		float L_18;
 		L_18 = Donut_Degrees_m9140F14B2644FE56FAE91DFEC53A5CCBBFD8AEBE(__this, L_17, NULL);
 		if ((!(((float)L_16) <= ((float)L_18))))
@@ -12819,7 +12796,7 @@ IL_00ae:
 		RuntimeObject* L_34 = V_0;
 		Array_Sort_mCAA68804E8A393AE2E86ACBBE3F70BC4A5CA21CB((RuntimeArray*)L_33, L_34, NULL);
 		// flagHandler.updateFlagPositions(extraOfsset);
-		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_35 = __this->___flagHandler_18;
+		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_35 = __this->___flagHandler_17;
 		float L_36 = ___0_extraOfsset;
 		NullCheck(L_35);
 		FlagHandler_updateFlagPositions_m7411A9752C0EC553C92049962CC1DA659052FE98(L_35, L_36, NULL);
@@ -12836,11 +12813,11 @@ IL_00ae:
 		NullCheck(L_38);
 		int32_t L_39 = 0;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_40 = (L_38)->GetAt(static_cast<il2cpp_array_size_t>(L_39));
-		__this->___firstBorn_25 = L_40;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___firstBorn_25), (void*)L_40);
+		__this->___firstBorn_24 = L_40;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___firstBorn_24), (void*)L_40);
 		// float angleToFirstBorn = Vector3.Angle(originVector, firstBorn.transform.position);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_41 = __this->___originVector_19;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_42 = __this->___firstBorn_25;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_41 = __this->___originVector_18;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_42 = __this->___firstBorn_24;
 		NullCheck(L_42);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_43;
 		L_43 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_42, NULL);
@@ -12852,8 +12829,8 @@ IL_00ae:
 		V_5 = L_45;
 		// if (angleToFirstBorn >= Degrees(radiansPerTick + deadZoneOffset))
 		float L_46 = V_5;
-		float L_47 = __this->___radiansPerTick_22;
-		float L_48 = __this->___deadZoneOffset_24;
+		float L_47 = __this->___radiansPerTick_21;
+		float L_48 = __this->___deadZoneOffset_23;
 		float L_49;
 		L_49 = Donut_Degrees_m9140F14B2644FE56FAE91DFEC53A5CCBBFD8AEBE(__this, ((float)il2cpp_codegen_add(L_47, L_48)), NULL);
 		if ((!(((float)L_46) >= ((float)L_49))))
@@ -12866,7 +12843,7 @@ IL_00ae:
 		float L_50 = V_5;
 		float L_51;
 		L_51 = Donut_Radians_mF3C2E13CC9A3CC6ABABA7B90E886083BB5256969(__this, L_50, NULL);
-		float L_52 = __this->___radiansPerTick_22;
+		float L_52 = __this->___radiansPerTick_21;
 		V_6 = ((float)il2cpp_codegen_subtract(L_51, L_52));
 		// Vector3 pos = (new Vector3(radius * Mathf.Cos(-radians), height, radius * Mathf.Sin(-radians)));
 		float L_53 = __this->___radius_11;
@@ -12896,7 +12873,7 @@ IL_00ae:
 		L_67 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_mD136E37F696C00A3A1D4F65724ACAE903E385181(L_60, L_61, L_64, L_66, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_mD136E37F696C00A3A1D4F65724ACAE903E385181_RuntimeMethod_var);
 		V_8 = L_67;
 		// TMP_Text label = firstBorn.transform.Find("Label").GetComponent<TMP_Text>();
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_68 = __this->___firstBorn_25;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_68 = __this->___firstBorn_24;
 		NullCheck(L_68);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_69;
 		L_69 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_68, NULL);
@@ -12924,15 +12901,15 @@ IL_00ae:
 		L_76 = VirtualFuncInvoker0< String_t* >::Invoke(65 /* System.String TMPro.TMP_Text::get_text() */, L_71);
 		int32_t L_77;
 		L_77 = Int32_Parse_m273CA1A9C7717C99641291A95C543711C0202AF0(L_76, NULL);
-		int32_t L_78 = __this->___tickGap_20;
+		int32_t L_78 = __this->___tickGap_19;
 		V_10 = ((int32_t)il2cpp_codegen_subtract(L_77, L_78));
 		// lowerbound -= tickGap;
 		int32_t L_79 = __this->___lowerbound_8;
-		int32_t L_80 = __this->___tickGap_20;
+		int32_t L_80 = __this->___tickGap_19;
 		__this->___lowerbound_8 = ((int32_t)il2cpp_codegen_subtract(L_79, L_80));
 		// upperbound -= tickGap;
 		int32_t L_81 = __this->___upperbound_9;
-		int32_t L_82 = __this->___tickGap_20;
+		int32_t L_82 = __this->___tickGap_19;
 		__this->___upperbound_9 = ((int32_t)il2cpp_codegen_subtract(L_81, L_82));
 		// labelNew.text = newYear.ToString();
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_83 = V_9;
@@ -12956,13 +12933,13 @@ IL_00ae:
 		GameObject_set_tag_m0A41528AFD8C83E1CEC5D769921159897CDD2B24(L_89, _stringLiteral7719E058A7C6DEF04DB4B478ECAC1ADA52145550, NULL);
 		// firstBorn = newChild;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_90 = V_8;
-		__this->___firstBorn_25 = L_90;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___firstBorn_25), (void*)L_90);
+		__this->___firstBorn_24 = L_90;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___firstBorn_24), (void*)L_90);
 		// flagHandler.enterNewFlags(newYear, newYear + tickGap, radius, height, lowerbound);
-		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_91 = __this->___flagHandler_18;
+		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_91 = __this->___flagHandler_17;
 		int32_t L_92 = V_10;
 		int32_t L_93 = V_10;
-		int32_t L_94 = __this->___tickGap_20;
+		int32_t L_94 = __this->___tickGap_19;
 		float L_95 = __this->___radius_11;
 		float L_96 = __this->___height_12;
 		int32_t L_97 = __this->___lowerbound_8;
@@ -12997,7 +12974,7 @@ IL_0274:
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_102 = (L_99)->GetAt(static_cast<il2cpp_array_size_t>(L_101));
 		V_11 = L_102;
 		// float angleToLastBorn = Vector3.Angle(originVector, lastBorn.transform.position);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_103 = __this->___originVector_19;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_103 = __this->___originVector_18;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_104 = V_11;
 		NullCheck(L_104);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_105;
@@ -13010,8 +12987,8 @@ IL_0274:
 		V_12 = L_107;
 		// if (angleToLastBorn >= Degrees(radiansPerTick + deadZoneOffset))
 		float L_108 = V_12;
-		float L_109 = __this->___radiansPerTick_22;
-		float L_110 = __this->___deadZoneOffset_24;
+		float L_109 = __this->___radiansPerTick_21;
+		float L_110 = __this->___deadZoneOffset_23;
 		float L_111;
 		L_111 = Donut_Degrees_m9140F14B2644FE56FAE91DFEC53A5CCBBFD8AEBE(__this, ((float)il2cpp_codegen_add(L_109, L_110)), NULL);
 		if ((!(((float)L_108) >= ((float)L_111))))
@@ -13025,7 +13002,7 @@ IL_0274:
 		float L_113;
 		L_113 = Donut_Radians_mF3C2E13CC9A3CC6ABABA7B90E886083BB5256969(__this, L_112, NULL);
 		// float radians = angleToRadian - radiansPerTick;
-		float L_114 = __this->___radiansPerTick_22;
+		float L_114 = __this->___radiansPerTick_21;
 		V_13 = ((float)il2cpp_codegen_subtract(L_113, L_114));
 		// Vector3 pos = (new Vector3(radius * Mathf.Cos(radians), height, radius * Mathf.Sin(radians)));
 		float L_115 = __this->___radius_11;
@@ -13084,15 +13061,15 @@ IL_0274:
 		L_139 = VirtualFuncInvoker0< String_t* >::Invoke(65 /* System.String TMPro.TMP_Text::get_text() */, L_138);
 		int32_t L_140;
 		L_140 = Int32_Parse_m273CA1A9C7717C99641291A95C543711C0202AF0(L_139, NULL);
-		int32_t L_141 = __this->___tickGap_20;
+		int32_t L_141 = __this->___tickGap_19;
 		V_17 = ((int32_t)il2cpp_codegen_add(L_140, L_141));
 		// lowerbound += tickGap;
 		int32_t L_142 = __this->___lowerbound_8;
-		int32_t L_143 = __this->___tickGap_20;
+		int32_t L_143 = __this->___tickGap_19;
 		__this->___lowerbound_8 = ((int32_t)il2cpp_codegen_add(L_142, L_143));
 		// upperbound += tickGap;
 		int32_t L_144 = __this->___upperbound_9;
-		int32_t L_145 = __this->___tickGap_20;
+		int32_t L_145 = __this->___tickGap_19;
 		__this->___upperbound_9 = ((int32_t)il2cpp_codegen_add(L_144, L_145));
 		// labelNew.text = newYear.ToString();
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_146 = V_16;
@@ -13114,9 +13091,9 @@ IL_0274:
 		NullCheck(L_148);
 		GameObject_set_tag_m0A41528AFD8C83E1CEC5D769921159897CDD2B24(L_148, _stringLiteral7719E058A7C6DEF04DB4B478ECAC1ADA52145550, NULL);
 		// flagHandler.enterNewFlags(newYear -tickGap, newYear, radius, height, lowerbound);
-		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_152 = __this->___flagHandler_18;
+		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_152 = __this->___flagHandler_17;
 		int32_t L_153 = V_17;
-		int32_t L_154 = __this->___tickGap_20;
+		int32_t L_154 = __this->___tickGap_19;
 		int32_t L_155 = V_17;
 		float L_156 = __this->___radius_11;
 		float L_157 = __this->___height_12;
@@ -13174,9 +13151,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Donut_renderTickMarks_mE5098B385BBEEF859
 		// radiansPerTick = (Mathf.PI*2f - deadZoneSize) / noOfTicks;
 		float L_5 = __this->___deadZoneSize_10;
 		int32_t L_6 = V_0;
-		__this->___radiansPerTick_22 = ((float)(((float)il2cpp_codegen_subtract((6.28318548f), L_5))/((float)L_6)));
+		__this->___radiansPerTick_21 = ((float)(((float)il2cpp_codegen_subtract((6.28318548f), L_5))/((float)L_6)));
 		// Debug.Log("radianPerTick" + radiansPerTick);
-		float* L_7 = (&__this->___radiansPerTick_22);
+		float* L_7 = (&__this->___radiansPerTick_21);
 		String_t* L_8;
 		L_8 = Single_ToString_mE282EDA9CA4F7DF88432D807732837A629D04972(L_7, NULL);
 		String_t* L_9;
@@ -13191,11 +13168,11 @@ IL_005c:
 	{
 		// float radians = i * radiansPerTick + deadZoneOffset;//  (i-lowerbound) * radiansPerTick + deadZoneOffset; // float radians = (i-lowerbound) * (Mathf.PI*2f - deadZoneSize) / noOfTicks + deadZoneSize/2;
 		int32_t L_10 = V_1;
-		float L_11 = __this->___radiansPerTick_22;
-		float L_12 = __this->___deadZoneOffset_24;
+		float L_11 = __this->___radiansPerTick_21;
+		float L_12 = __this->___deadZoneOffset_23;
 		V_2 = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(((float)L_10), L_11)), L_12));
 		// Vector3 pos = donutCenter + (new Vector3(radius *Mathf.Cos(-radians), height, radius *Mathf.Sin(-radians)));
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13 = __this->___donutCenter_21;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13 = __this->___donutCenter_20;
 		float L_14 = __this->___radius_11;
 		float L_15 = V_2;
 		float L_16;
@@ -13212,7 +13189,7 @@ IL_005c:
 		L_22 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_13, L_21, NULL);
 		V_3 = L_22;
 		// var lookPos = donutCenter - pos;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23 = __this->___donutCenter_21;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23 = __this->___donutCenter_20;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_24 = V_3;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_25;
 		L_25 = Vector3_op_Subtraction_mE42023FF80067CB44A1D4A27EB7CF2B24CABB828_inline(L_23, L_24, NULL);
@@ -13325,23 +13302,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Donut_makeDeadZoneTicks_mBFAF0174AF293DA
 	{
 		// Vector3 deadzoneVectorStart = new Vector3(radius * Mathf.Cos(-7*deadZoneOffset/8), height, radius * Mathf.Sin(-7*deadZoneOffset/8));
 		float L_0 = __this->___radius_11;
-		float L_1 = __this->___deadZoneOffset_24;
+		float L_1 = __this->___deadZoneOffset_23;
 		float L_2;
 		L_2 = cosf(((float)(((float)il2cpp_codegen_multiply((-7.0f), L_1))/(8.0f))));
 		float L_3 = __this->___height_12;
 		float L_4 = __this->___radius_11;
-		float L_5 = __this->___deadZoneOffset_24;
+		float L_5 = __this->___deadZoneOffset_23;
 		float L_6;
 		L_6 = sinf(((float)(((float)il2cpp_codegen_multiply((-7.0f), L_5))/(8.0f))));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_0), ((float)il2cpp_codegen_multiply(L_0, L_2)), L_3, ((float)il2cpp_codegen_multiply(L_4, L_6)), NULL);
 		// Vector3 deadzoneVectorBeep = new Vector3(radius * Mathf.Cos(4*deadZoneOffset/9), height, radius * Mathf.Sin(-4*deadZoneOffset/9));
 		float L_7 = __this->___radius_11;
-		float L_8 = __this->___deadZoneOffset_24;
+		float L_8 = __this->___deadZoneOffset_23;
 		float L_9;
 		L_9 = cosf(((float)(((float)il2cpp_codegen_multiply((4.0f), L_8))/(9.0f))));
 		float L_10 = __this->___height_12;
 		float L_11 = __this->___radius_11;
-		float L_12 = __this->___deadZoneOffset_24;
+		float L_12 = __this->___deadZoneOffset_23;
 		float L_13;
 		L_13 = sinf(((float)(((float)il2cpp_codegen_multiply((-4.0f), L_12))/(9.0f))));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_1), ((float)il2cpp_codegen_multiply(L_7, L_9)), L_10, ((float)il2cpp_codegen_multiply(L_11, L_13)), NULL);
@@ -13351,23 +13328,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Donut_makeDeadZoneTicks_mBFAF0174AF293DA
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_2), L_14, L_15, (0.0f), NULL);
 		// Vector3 deadzoneVectorBoop = new Vector3(radius * Mathf.Cos(4*deadZoneOffset/9), height, radius * Mathf.Sin(4*deadZoneOffset/9));
 		float L_16 = __this->___radius_11;
-		float L_17 = __this->___deadZoneOffset_24;
+		float L_17 = __this->___deadZoneOffset_23;
 		float L_18;
 		L_18 = cosf(((float)(((float)il2cpp_codegen_multiply((4.0f), L_17))/(9.0f))));
 		float L_19 = __this->___height_12;
 		float L_20 = __this->___radius_11;
-		float L_21 = __this->___deadZoneOffset_24;
+		float L_21 = __this->___deadZoneOffset_23;
 		float L_22;
 		L_22 = sinf(((float)(((float)il2cpp_codegen_multiply((4.0f), L_21))/(9.0f))));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_3), ((float)il2cpp_codegen_multiply(L_16, L_18)), L_19, ((float)il2cpp_codegen_multiply(L_20, L_22)), NULL);
 		// Vector3 deadzoneVectorEnd = new Vector3(radius * Mathf.Cos(7*deadZoneOffset/8), height, radius * Mathf.Sin(7*deadZoneOffset/8));
 		float L_23 = __this->___radius_11;
-		float L_24 = __this->___deadZoneOffset_24;
+		float L_24 = __this->___deadZoneOffset_23;
 		float L_25;
 		L_25 = cosf(((float)(((float)il2cpp_codegen_multiply((7.0f), L_24))/(8.0f))));
 		float L_26 = __this->___height_12;
 		float L_27 = __this->___radius_11;
-		float L_28 = __this->___deadZoneOffset_24;
+		float L_28 = __this->___deadZoneOffset_23;
 		float L_29;
 		L_29 = sinf(((float)(((float)il2cpp_codegen_multiply((7.0f), L_28))/(8.0f))));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_4), ((float)il2cpp_codegen_multiply(L_23, L_25)), L_26, ((float)il2cpp_codegen_multiply(L_27, L_29)), NULL);
@@ -13429,7 +13406,7 @@ IL_016e_1:
 				L_42 = Enumerator_get_Current_m098C9AE095DEFD00B1B0314A772330F537805EE2_inline((&V_5), Enumerator_get_Current_m098C9AE095DEFD00B1B0314A772330F537805EE2_RuntimeMethod_var);
 				V_6 = L_42;
 				// var lookPos = donutCenter - pos;
-				Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_43 = __this->___donutCenter_21;
+				Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_43 = __this->___donutCenter_20;
 				Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_44 = V_6;
 				Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_45;
 				L_45 = Vector3_op_Subtraction_mE42023FF80067CB44A1D4A27EB7CF2B24CABB828_inline(L_43, L_44, NULL);
@@ -13442,10 +13419,10 @@ IL_016e_1:
 				L_47 = Quaternion_LookRotation_mDB2CCA75B8E1AB98104F2A6E1A1EA57D0D1298D7(L_46, NULL);
 				V_8 = L_47;
 				// Instantiate(deadZoneIndicatorPrefab, pos, rot, deadZoneParent.transform);
-				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_48 = __this->___deadZoneIndicatorPrefab_15;
+				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_48 = __this->___deadZoneIndicatorPrefab_14;
 				Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_49 = V_6;
 				Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_50 = V_8;
-				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_51 = __this->___deadZoneParent_16;
+				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_51 = __this->___deadZoneParent_15;
 				NullCheck(L_51);
 				Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_52;
 				L_52 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_51, NULL);
@@ -13652,18 +13629,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Donut_RerenderScene_mF9A7A54677782961E71
 		int32_t L_1 = __this->___upperbound_9;
 		int32_t L_2;
 		L_2 = Donut_computeTickGap_mD8D2E3C2A2761A013CA8D77166D797CD5B7D69BB(__this, L_0, L_1, NULL);
-		__this->___tickGap_20 = L_2;
+		__this->___tickGap_19 = L_2;
 		// KillChildrenTicks();//remove all old tickMarks
 		Donut_KillChildrenTicks_m527508FBEA1442C70A56DF90199E6DB35786931D(__this, NULL);
 		// flagHandler.KillAllFlags();//Remove flags
-		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_3 = __this->___flagHandler_18;
+		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_3 = __this->___flagHandler_17;
 		NullCheck(L_3);
 		FlagHandler_KillAllFlags_m4F0DDAD86B47B85888E56F36C3B898284AE9B05B(L_3, NULL);
 		// renderTickMarks(tickGap); //Redraw from scratch
-		int32_t L_4 = __this->___tickGap_20;
+		int32_t L_4 = __this->___tickGap_19;
 		Donut_renderTickMarks_mE5098B385BBEEF85975E2731EAA2F35508D7EBA4(__this, L_4, NULL);
 		// flagHandler.setFlags(radius, height, deadZoneSize, lowerbound, upperbound);
-		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_5 = __this->___flagHandler_18;
+		FlagHandler_tCEB53842ADC2494EBEAA6E908BFD5546CE526B68* L_5 = __this->___flagHandler_17;
 		float L_6 = __this->___radius_11;
 		float L_7 = __this->___height_12;
 		float L_8 = __this->___deadZoneSize_10;
@@ -13761,7 +13738,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Donut__ctor_m06D4B004CC71BA179C4EC568613
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0;
 		memset((&L_0), 0, sizeof(L_0));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_0), (0.0f), (0.0f), (0.0f), /*hidden argument*/NULL);
-		__this->___donutCenter_21 = L_0;
+		__this->___donutCenter_20 = L_0;
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
 	}
@@ -15297,107 +15274,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void forwardFlag_moveBack_mE7CDD51D8A44436C92
 }
 // System.Void forwardFlag::.ctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void forwardFlag__ctor_m6102E0356400A16131466C36D5B62F8E4F8444CE (forwardFlag_t84FA13AF1021F3075CC7D851E4D30ABB7AE5402A* __this, const RuntimeMethod* method) 
-{
-	{
-		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
-		return;
-	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
-// System.Void HighlightFlag::Start()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HighlightFlag_Start_m54325F2AB67868E6861FE2673D2D29520B926B05 (HighlightFlag_t005D25C54BC041505A2D01FF9FA49A607F7F4C79* __this, const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8_RuntimeMethod_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		// startcolor = GetComponent<Renderer>().material.color;
-		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_0;
-		L_0 = Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8(__this, Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8_RuntimeMethod_var);
-		NullCheck(L_0);
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_1;
-		L_1 = Renderer_get_material_m5BA2A00816C4CC66580D4B2E409CF10718C15656(L_0, NULL);
-		NullCheck(L_1);
-		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_2;
-		L_2 = Material_get_color_mA4B7D4B96200D9D8B4F36BF19957E9DA81071DBB(L_1, NULL);
-		__this->___startcolor_5 = L_2;
-		// }
-		return;
-	}
-}
-// System.Void HighlightFlag::Update()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HighlightFlag_Update_m1E27C10A3BEED04825029DD4D52D8079AD1E7B4F (HighlightFlag_t005D25C54BC041505A2D01FF9FA49A607F7F4C79* __this, const RuntimeMethod* method) 
-{
-	{
-		// }
-		return;
-	}
-}
-// System.Void HighlightFlag::OnPointEnter()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HighlightFlag_OnPointEnter_m09A44AB840072C3322FDD3F0D38FE88B5E992646 (HighlightFlag_t005D25C54BC041505A2D01FF9FA49A607F7F4C79* __this, const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		// GetComponent<Renderer>().material.color = Color.yellow;
-		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_0;
-		L_0 = Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8(__this, Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8_RuntimeMethod_var);
-		NullCheck(L_0);
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_1;
-		L_1 = Renderer_get_material_m5BA2A00816C4CC66580D4B2E409CF10718C15656(L_0, NULL);
-		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_2;
-		L_2 = Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline(NULL);
-		NullCheck(L_1);
-		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_1, L_2, NULL);
-		// Instantiate(testInstance);
-		Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* L_3 = __this->___testInstance_4;
-		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* L_4;
-		L_4 = Object_Instantiate_m8C504E8CCCA0816BEB5BB431A0BCECE17D217A0B(L_3, NULL);
-		// }
-		return;
-	}
-}
-// System.Void HighlightFlag::OnPointExit()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HighlightFlag_OnPointExit_m0BE7C9C4E44CE19C1B5693A04E47886B9194696C (HighlightFlag_t005D25C54BC041505A2D01FF9FA49A607F7F4C79* __this, const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8_RuntimeMethod_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		// GetComponent<Renderer>().material.color = startcolor;
-		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_0;
-		L_0 = Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8(__this, Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8_RuntimeMethod_var);
-		NullCheck(L_0);
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_1;
-		L_1 = Renderer_get_material_m5BA2A00816C4CC66580D4B2E409CF10718C15656(L_0, NULL);
-		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_2 = __this->___startcolor_5;
-		NullCheck(L_1);
-		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_1, L_2, NULL);
-		// }
-		return;
-	}
-}
-// System.Void HighlightFlag::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HighlightFlag__ctor_mB976339DECA3AA17A1BA30B7202DF4AF75E8C9D9 (HighlightFlag_t005D25C54BC041505A2D01FF9FA49A607F7F4C79* __this, const RuntimeMethod* method) 
 {
 	{
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
@@ -25950,29 +25826,11 @@ IL_001e:
 		return L_4;
 	}
 }
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline (const RuntimeMethod* method) 
-{
-	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F V_0;
-	memset((&V_0), 0, sizeof(V_0));
-	{
-		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0;
-		memset((&L_0), 0, sizeof(L_0));
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_0), (1.0f), (0.921568632f), (0.0156862754f), (1.0f), /*hidden argument*/NULL);
-		V_0 = L_0;
-		goto IL_001d;
-	}
-
-IL_001d:
-	{
-		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_1 = V_0;
-		return L_1;
-	}
-}
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Donut_getRadianPerTick_m02180A70988617CB085B55CA1DE03AF49E31D5FC_inline (Donut_t50024B53C70E86FF131D33C8C3B4D671CC872B38* __this, const RuntimeMethod* method) 
 {
 	{
 		// return radiansPerTick;
-		float L_0 = __this->___radiansPerTick_22;
+		float L_0 = __this->___radiansPerTick_21;
 		return L_0;
 	}
 }
